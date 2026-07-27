@@ -40,9 +40,21 @@
             await OneSignal.init({
                 appId: "7afa2b42-a75a-4746-93bd-406077384b88",
                 safari_web_id: "web.onesignal.auto.1997779e-e1de-41f4-ac74-4543cfbf0412",
-                notifyButton: {
-                    enable: true,
-                },
+                promptOptions: {
+                    slidedown: {
+                        prompts: [
+                            {
+                                type: "push",
+                                autoPrompt: true,
+                                text: {
+                                    actionMessage: "¿Querés recibir novedades sobre reciclaje en Bariloche?",
+                                    acceptButton: "Suscribirme",
+                                    cancelButton: "Ahora no"
+                                }
+                            }
+                        ]
+                    }
+                }
             });
         });
     </script>
