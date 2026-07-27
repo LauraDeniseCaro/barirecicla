@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baritoxico Recicla - Guía Completa de Puntos Verdes</title>
+
+    <!-- Meta etiquetas de optimización SEO -->
+    <meta name="description"
+        content="Guía completa de puntos verdes y reciclaje en San Carlos de Bariloche. Encontrá centros de recepción de plásticos, cartón, compost y residuos especiales.">
+    <meta name="keywords"
+        content="reciclaje, bariloche, puntos verdes, compost, residuos especiales, medio ambiente, ecología">
+    <meta name="author" content="Baritoxico">
+
+    <!-- Open Graph / Meta etiquetas para Redes Sociales (WhatsApp, Instagram, Facebook) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Baritoxico Recicla - Guía Completa de Puntos Verdes">
+    <meta property="og:description"
+        content="Guía completa de puntos verdes y reciclaje en San Carlos de Bariloche. Encontrá centros de recepción de plásticos, cartón, compost y residuos especiales.">
+    <meta property="og:image" content="img/baritoxico-logo.webp">
+    <meta property="og:site_name" content="Baritoxico Recicla">
+
+    <!-- Favicons y soporte PWA -->
+    <link rel="icon" type="image/webp" href="img/favicon-baritoxico.webp">
+    <link rel="apple-touch-icon" href="img/baritoxico-logo.webp">
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Recursos Externos Preconectados -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- OneSignal Web Push -->
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+        window.OneSignalDeferred = window.OneSignalDeferred || [];
+        OneSignalDeferred.push(async function (OneSignal) {
+            await OneSignal.init({
+                appId: "7afa2b42-a75a-4746-93bd-406077384b88",
+                safari_web_id: "web.onesignal.auto.1997779e-e1de-41f4-ac74-4543cfbf0412",
+                notifyButton: {
+                    enable: true,
+                },
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="app-container">
+
+        <!-- =========================================================================
+           HEADER OVERHAUL PREMIUM
+           ========================================================================= -->
+        <div class="header-container">
+            <img src="img/baritoxico-logo.webp" class="brand-logo" alt="Logo Recicla Bariloche">
+            <div class="header-text-wrapper">
+                <h1>Baritoxico Recicla</h1>
+                <h2>Tu guía de puntos verdes</h2>
+            </div>
+        </div>
+
+        <!-- =========================================================================
+           BOX INTRO CON ONDA (Íconos + Preguntas unificadas)
+           ========================================================================= -->
+        <div class="border-box intro-box">
+            <div class="intro-item">
+                <i class="fa-solid fa-leaf intro-icon"></i>
+                <p>¿Querés reducir tu huella en el planeta?</p>
+            </div>
+            <div class="intro-item">
+                <i class="fa-solid fa-recycle intro-icon"></i>
+                <p>¿Separás pero no sabés dónde llevar tus reciclables?</p>
+            </div>
+            <div class="intro-item">
+                <i class="fa-solid fa-seedling intro-icon"></i>
+                <p>¿Querés empezar a compostar?</p>
+            </div>
+        </div>
+
+        <!-- =========================================================================
+           INFO ACCENT BOX (Alerta e indicaciones básicas)
+           ========================================================================= -->
+        <div class="border-box info-accent-box">
+            <p><strong>Acá encontrarás dónde llevar tus reciclables</strong></p>
+            <p><em>Recordá: Todos los materiales deben estar limpios y secos.</em></p>
+        </div>
+
+        <!-- Contenedor dinámico para el Slider de Novedades -->
+        <div id="contenedor-novedades"></div>
+
+        <!-- =========================================================================
+           BUSCADOR Y FILTROS (Ubicación estratégica inteligente)
+           ========================================================================= -->
+        <div class="search-filter-container">
+            <input type="text" id="buscador" placeholder="Buscar por barrio, material u organización...">
+
+            <div class="filter-buttons">
+                <button class="btn-filter active" onclick="filtrarCategoria(event, 'todas')">
+                    <i class="fa-solid fa-border-all"></i> Todo
+                </button>
+                <button class="btn-filter" onclick="filtrarCategoria(event, 'reciclaje')">
+                    <i class="fa-solid fa-recycle"></i> Reciclables
+                </button>
+                <button class="btn-filter" onclick="filtrarCategoria(event, 'compostaje')">
+                    <i class="fa-solid fa-seedling"></i> Compost
+                </button>
+                <button class="btn-filter" onclick="filtrarCategoria(event, 'especiales')">
+                    <i class="fa-solid fa-triangle-exclamation"></i> Especiales
+                </button>
+            </div>
+        </div>
+
+        <!-- =========================================================================
+           REJILLA DE TARJETAS DINÁMICAS
+           ========================================================================= -->
+        <div class="grid-org" id="contenedor-tarjetas"></div>
+
+        <!-- =========================================================================
+           CONTENEDOR DEL MAPA PREMIUM (Independiente)
+           ========================================================================= -->
+        <div class="map-container">
+            <div class="map-header">
+                <div class="map-title-wrapper">
+                    <i class="fa-solid fa-map-location-dot map-title-icon"></i>
+                    <div>
+                        <h3>Mapa de Puntos Verdes</h3>
+                        <span>Explorá los centros de recepción en Bariloche</span>
+                    </div>
+                </div>
+            </div>
+            <iframe src="https://www.google.com/maps/d/u/1/embed?mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ehbc=2E312F"
+                width="100%" height="450" loading="lazy"></iframe>
+        </div>
+
+        <!-- =========================================================================
+           FOOTER BOX MODERNO (Totalmente independiente)
+           ========================================================================= -->
+        <div class="footer-box">
+            <p class="footer-brand">BARITOXICO</p>
+
+            <p class="footer-subtitle">
+                ¡Sumate a la comunidad para no perderte ninguna data ambiental!
+            </p>
+
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/baritoxico/" target="_blank" class="footer-icon icon-instagram"
+                    title="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://www.tiktok.com/@baritoxico" target="_blank" class="footer-icon icon-tiktok"
+                    title="TikTok">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+                <a href="https://www.facebook.com/share/1GFwuuGC3p/" target="_blank" class="footer-icon icon-facebook"
+                    title="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+            </div>
+
+            <hr class="footer-hr">
+
+            <div class="support-section">
+                <p class="support-title">¿Te sirvió la guía? 🌲</p>
+                <p class="support-text">
+                    Creamos este espacio de forma independiente para facilitar el reciclaje en Bariloche. Si querés
+                    darnos una mano para seguir mejorando la web y expandir el proyecto, ¡todo suma un montón!
+                </p>
+                <a href="https://cafecito.app/baritoxico" target="_blank" class="btn-cafecito">☕ Invitanos un
+                    Cafecito</a>
+            </div>
+
+            <p class="footer-copy">San Carlos de Bariloche - 2026</p>
+        </div>
+
+    </div>
+
+    <!-- =========================================================================
+       BANNER FLOTANTE DE INSTALACIÓN PWA
+       ========================================================================= -->
+    <div id="banner-instalar" class="install-banner">
+        <div class="install-content">
+            <div class="install-text">
+                <h4>¡Llevá la guía en tu celu! 📲</h4>
+                <p id="instrucciones-instalacion">Instalá la app para usarla más rápido y sin internet.</p>
+            </div>
+            <div class="install-actions">
+                <button id="btn-instalar-accion" class="btn-instalar-main">Instalar</button>
+                <button id="btn-cerrar-banner" class="btn-cerrar-x">×</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script de carga optimizado -->
+    <script src="script.js" defer></script>
+</body>
+
+</html>
