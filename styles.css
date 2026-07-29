@@ -968,3 +968,68 @@ body {
     .btn-prev { left: 8px; }
     .btn-next { right: 8px; }
 }
+
+/* =========================================================================
+   12. BOTÓN Y BANNER DE SUSCRIPCIÓN ONESIGNAL (Integración con el Slider)
+   ========================================================================= */
+.suscripcion-fija-box {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-left: 5px solid var(--verde-medio);
+    border-radius: 16px;
+    padding: 16px 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.suscripcion-fija-box p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--verde-oscuro);
+    font-weight: 600;
+}
+
+.btn-suscripcion-toggle {
+    background-color: var(--verde-medio);
+    color: var(--blanco);
+    border: none;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    font-family: var(--fuente-moderna);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 12px rgba(45, 106, 79, 0.2);
+}
+
+.btn-suscripcion-toggle:hover {
+    background-color: var(--verde-oscuro);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(27, 67, 50, 0.3);
+}
+
+/* ACTUALIZACIÓN ORGÁNICA PARA ESTADO SUSCRIPTO */
+.btn-suscripcion-toggle.subscripto {
+    background-color: #FF2900;
+    color: var(--blanco);
+    border: 1px solid #FF2900;
+    box-shadow: 0 4px 12px rgba(27, 67, 50, 0.25);
+}
+
+.btn-suscripcion-toggle.subscripto:hover {
+    background-color: var(--negro);
+    border-color: var(--negro);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(8, 28, 21, 0.35);
+}

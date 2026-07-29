@@ -13,7 +13,7 @@
         content="reciclaje, bariloche, puntos verdes, compost, residuos especiales, medio ambiente, ecología">
     <meta name="author" content="Baritoxico">
 
-    <!-- Open Graph / Meta etiquetas para Redes Sociales (WhatsApp, Instagram, Facebook) -->
+    <!-- Open Graph / Meta etiquetas para Redes Sociales -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Baritoxico Recicla - Guía Completa de Puntos Verdes">
     <meta property="og:description"
@@ -32,7 +32,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <!-- OneSignal Web Push -->
+
+    <!-- OneSignal Web Push SDK + Lógica de Gestión de Permisos -->
     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
     <script>
         window.OneSignalDeferred = window.OneSignalDeferred || [];
@@ -56,6 +57,45 @@
                     }
                 }
             });
+
+            // Lógica para sincronizar el botón de suscripción manual
+            const btnToggle = document.getElementById('btn-onesignal-toggle');
+            const btnText = document.getElementById('btn-onesignal-text');
+
+            if (btnToggle) {
+                async function actualizarEstadoBoton() {
+                    const isSubscribed = OneSignal.User.PushSubscription.optedIn;
+                    if (isSubscribed) {
+                        btnText.innerText = "Desactivar notificaciones";
+                        btnToggle.classList.add("subscripto");
+                    } else {
+                        btnText.innerText = "Activar notificaciones";
+                        btnToggle.classList.remove("subscripto");
+                    }
+                }
+
+                if (OneSignal.Notifications.isPushSupported()) {
+                    OneSignal.User.PushSubscription.addEventListener("change", actualizarEstadoBoton);
+                    await actualizarEstadoBoton();
+                }
+
+                btnToggle.addEventListener('click', async () => {
+                    if (!OneSignal.Notifications.isPushSupported()) {
+                        alert("Tu navegador no soporta notificaciones push.");
+                        return;
+                    }
+                    const isSubscribed = OneSignal.User.PushSubscription.optedIn;
+                    if (isSubscribed) {
+                        await OneSignal.User.PushSubscription.optOut();
+                    } else {
+                        await OneSignal.User.PushSubscription.optIn();
+                        if (OneSignal.Notifications.permission !== true) {
+                            await OneSignal.Notifications.requestPermission();
+                        }
+                    }
+                    actualizarEstadoBoton();
+                });
+            }
         });
     </script>
 </head>
@@ -63,9 +103,7 @@
 <body>
     <div class="app-container">
 
-        <!-- =========================================================================
-           HEADER OVERHAUL PREMIUM
-           ========================================================================= -->
+        <!-- HEADER OVERHAUL PREMIUM -->
         <div class="header-container">
             <img src="img/baritoxico-logo.webp" class="brand-logo" alt="Logo Recicla Bariloche">
             <div class="header-text-wrapper">
@@ -74,9 +112,7 @@
             </div>
         </div>
 
-        <!-- =========================================================================
-           BOX INTRO CON ONDA (Íconos + Preguntas unificadas)
-           ========================================================================= -->
+        <!-- BOX INTRO CON ONDA -->
         <div class="border-box intro-box">
             <div class="intro-item">
                 <i class="fa-solid fa-leaf intro-icon"></i>
@@ -92,20 +128,31 @@
             </div>
         </div>
 
-        <!-- =========================================================================
-           INFO ACCENT BOX (Alerta e indicaciones básicas)
-           ========================================================================= -->
+        <!-- SECCIÓN DE NOVEDADES Y SUSCRIPCIÓN PUSH -->
+        <div class="novedades-wrapper">
+            <div class="suscripcion-fija-box" style="display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <p style="margin: 0;"><i class="fa-solid fa-bell"></i> ¿Querés recibir las novedades al instante en tu celular?</p>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <button id="btn-onesignal-toggle" class="btn-suscripcion-toggle">
+                        <i class="fa-solid fa-bell"></i> <span id="btn-onesignal-text">Activar notificaciones</span>
+                    </button>
+                    <button onclick="this.closest('.suscripcion-fija-box').style.display='none'" style="background: none; border: none; color: #666; font-size: 1.2rem; cursor: pointer;" title="Cerrar">
+                        &times;
+                    </button>
+                </div>
+            </div>
+
+            <!-- Contenedor dinámico para las novedades in-app -->
+            <div id="contenedor-novedades"></div>
+        </div>
+
+        <!-- INFO ACCENT BOX -->
         <div class="border-box info-accent-box">
             <p><strong>Acá encontrarás dónde llevar tus reciclables</strong></p>
             <p><em>Recordá: Todos los materiales deben estar limpios y secos.</em></p>
         </div>
 
-        <!-- Contenedor dinámico para el Slider de Novedades -->
-        <div id="contenedor-novedades"></div>
-
-        <!-- =========================================================================
-           BUSCADOR Y FILTROS (Ubicación estratégica inteligente)
-           ========================================================================= -->
+        <!-- BUSCADOR Y FILTROS -->
         <div class="search-filter-container">
             <input type="text" id="buscador" placeholder="Buscar por barrio, material u organización...">
 
@@ -125,14 +172,10 @@
             </div>
         </div>
 
-        <!-- =========================================================================
-           REJILLA DE TARJETAS DINÁMICAS
-           ========================================================================= -->
+        <!-- REJILLA DE TARJETAS DINÁMICAS -->
         <div class="grid-org" id="contenedor-tarjetas"></div>
 
-        <!-- =========================================================================
-           CONTENEDOR DEL MAPA PREMIUM (Independiente)
-           ========================================================================= -->
+        <!-- CONTENEDOR DEL MAPA PREMIUM -->
         <div class="map-container">
             <div class="map-header">
                 <div class="map-title-wrapper">
@@ -147,9 +190,7 @@
                 width="100%" height="450" loading="lazy"></iframe>
         </div>
 
-        <!-- =========================================================================
-           FOOTER BOX MODERNO (Totalmente independiente)
-           ========================================================================= -->
+        <!-- FOOTER BOX MODERNO -->
         <div class="footer-box">
             <p class="footer-brand">BARITOXICO</p>
 
@@ -189,9 +230,7 @@
 
     </div>
 
-    <!-- =========================================================================
-       BANNER FLOTANTE DE INSTALACIÓN PWA
-       ========================================================================= -->
+    <!-- BANNER FLOTANTE DE INSTALACIÓN PWA -->
     <div id="banner-instalar" class="install-banner">
         <div class="install-content">
             <div class="install-text">
@@ -205,7 +244,7 @@
         </div>
     </div>
 
-    <!-- Script de carga optimizado -->
+    <!-- Script principal de la aplicación -->
     <script src="script.js" defer></script>
 </body>
 

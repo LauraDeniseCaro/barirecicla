@@ -1,5 +1,5 @@
 // =========================================================================
-// 1. REGISTRO DEL SERVICE WORKER
+// 1. REGISTRO DEL SERVICE WORKER Y HELPERS
 // =========================================================================
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
@@ -41,7 +41,7 @@ function parsearCSV(texto) {
         if (char === '"') {
             if (dentroDeComillas && siguienteChar === '"') {
                 valorActual += '"';
-                i++; 
+                i++;
             } else {
                 dentroDeComillas = !dentroDeComillas;
             }
@@ -50,7 +50,7 @@ function parsearCSV(texto) {
             valorActual = '';
         } else if ((char === '\r' || char === '\n') && !dentroDeComillas) {
             if (char === '\r' && siguienteChar === '\n') {
-                i++; 
+                i++;
             }
             lineaActual.push(valorActual.trim());
             lineas.push(lineaActual);
@@ -94,7 +94,7 @@ async function verificarYMostrarNovedades() {
         const listaNovedadesDinamica = parsearCSV(textoCSV);
 
         const hoy = new Date();
-        hoy.setHours(0, 0, 0, 0); 
+        hoy.setHours(0, 0, 0, 0);
 
         const novedadesVigentes = listaNovedadesDinamica.filter(nov => {
             if (!nov.fechaLimite) return false;
@@ -116,7 +116,10 @@ async function verificarYMostrarNovedades() {
             return fechaLimiteDate >= hoy;
         });
 
-        totalNovedadesVigentes = novedadesVigentes.length;
+        // 🟢 AQUÍ SE TOMAN LAS ÚLTIMAS 3 NOVEDADES
+        const ultimasNovedades = novedadesVigentes.reverse().slice(0, 3);
+
+        totalNovedadesVigentes = ultimasNovedades.length;
 
         if (totalNovedadesVigentes === 0) {
             console.warn("No hay novedades vigentes para mostrar.");
@@ -124,13 +127,14 @@ async function verificarYMostrarNovedades() {
             return;
         }
 
-        let slidesHTML = novedadesVigentes.map((nov, index) => {
+        // 🟢 SE USA 'ultimasNovedades' PARA GENERAR EL SLIDER
+        let slidesHTML = ultimasNovedades.map((nov, index) => {
             const tituloSano = sanitizarHTML(nov.titulo || 'Novedad');
             const badgeSana = sanitizarHTML(nov.badge || 'Info');
             const descSana = sanitizarHTML(nov.descripcion || '');
-            const textoLinkSano = sanitizarHTML(nov.textoLink || 'Saber más');
-            
-            const linkSano = (nov.link && (nov.link.startsWith('http://') || nov.link.startsWith('https://'))) ? encodeURI(nov.link) : '';
+            const textoLinkSano = sanitizarHTML(nov.textoLink || 'Más info / Suscribirme');
+
+            const linkSano = (nov.link && (nov.link.startsWith('http://') || nov.link.startsWith('https://'))) ? encodeURI(nov.link) : 'https://wa.me/5492944916790';
             const imagenSana = (nov.imagen && (nov.imagen.startsWith('http://') || nov.imagen.startsWith('https://') || nov.imagen.startsWith('./'))) ? encodeURI(nov.imagen) : '';
 
             const estructuraImagen = imagenSana ? `
@@ -149,11 +153,14 @@ async function verificarYMostrarNovedades() {
                             <span class="novedades-badge" style="background-color: ${colorBadgeReal}">${badgeSana}</span>
                         </div>
                         <p>${descSana}</p>
-                        ${linkSano ? `
+                        <div style="display: flex; gap: 10px; align-items: center; margin-top: 10px; flex-wrap: wrap;">
                             <a href="${linkSano}" target="_blank" class="novedades-btn-accion">
                                 <i class="fa-solid fa-circle-info"></i> ${textoLinkSano}
                             </a>
-                        ` : ''}
+                            <button onclick="this.closest('.slide-item').style.display='none'" style="background: transparent; border: 1px solid #ccc; color: #555; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-size: 0.8rem;">
+                                Descartar
+                            </button>
+                        </div>
                     </div>
                     ${estructuraImagen}
                 </div>
@@ -170,7 +177,7 @@ async function verificarYMostrarNovedades() {
                     <i class="fa-solid fa-angle-right"></i>
                 </button>
                 <div class="slider-indicators">
-                    ${novedadesVigentes.map((_, index) => `
+                    ${ultimasNovedades.map((_, index) => `
                         <span class="indicator-dot ${index === 0 ? 'active' : ''}" onclick="irAlSlide(${index})"></span>
                     `).join('')}
                 </div>
@@ -245,25 +252,25 @@ function actualizarIndicadoresVisuales(index) {
     if (dots.length > 0 && dots[currentSlide]) {
         dots[currentSlide].classList.remove('active');
         currentSlide = index;
-        if(dots[currentSlide]) dots[currentSlide].classList.add('active');
+        if (dots[currentSlide]) dots[currentSlide].classList.add('active');
     } else {
         currentSlide = index;
     }
 }
 
 // =========================================================================
-// 3. MATRIZ DE DATOS FIJOS
+// 3. MATRIZ DE DATOS COMPLETA DE ORGANIZACIONES Y CENTROS
 // =========================================================================
 const listaOrganizaciones = [
     {
         categoria: "reciclaje",
-        materiales: "Plásticos (film, botellas PET, tapitas, baldes, cajones), metales (latas de gaseosas, cervezas y conserva, cobre, bronce, aluminio), envases de tetra pack, papel (hojas, libros) and cartón.",
+        materiales: "Plásticos (film, botellas PET, tapitas, baldes, cajones), metales (latas de gaseosas, cervezas y conserva, cobre, bronce, aluminio), envases de tetra pack, papel (hojas, libros) y cartón.",
         tags: "arb vertedero recicladores carton papel hojas libros libro baldes de plastico balde de plastico cajones de plastico cajon de plastico botellas pet botella pet tapitas plasticas tapas de botella tapita de botella metales cobre bronce aluminio latas de gaseosa lata de gaseosa latas de cerveza lata de cerveza nylon strech film packs de gaseosa latas de conserva lata de conserva tetra pack tetrapack caja de leche cajas de leche",
         logo: "img/logo-arb.webp",
         imagen: "img/arb.webp",
         nombre: "ARB - RECICLADORES",
         elementos: [
-            { tipo: "link-geo", url: "https://www.google.com/maps/d/u/1/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.1750728%2C-71.354338&z=16", texto: "Vertedero" },
+            { tipo: "link-geo", url: "https://www.google.com/maps/d/u/1/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.1750728%2C-71.354338&z=16", texto: "Vertedero Municipal" },
             { tipo: "texto", icono: "fa-regular fa-clock", texto: "Lun-Vie 8-16hs / Sáb 8-12hs" },
             { tipo: "whatsapp", numero: "2944916790" },
             { tipo: "email", correo: "arbbariloche@gmail.com" },
@@ -285,7 +292,7 @@ const listaOrganizaciones = [
     },
     {
         categoria: "reciclaje",
-        materiales: "Plásticos (botellas PET, tapitas, envases de shampoo o acondicionador, bidones, botellas de lavandina) and latas de cerveza y gaseosa.",
+        materiales: "Plásticos (botellas PET, tapitas, envases de shampoo o acondicionador, bidones, botellas de lavandina) y latas de cerveza y gaseosa.",
         tags: "jovenes pioneros conicet frutillar pet botella pet botellas pets envase de shampoo envases de shampoo envases de acondicionador envase de acondicionador shampoo acondicionador bolsa de snacks bolsas de snacks envoltorios envoltorio envoltorios de snacks envoltorio de snacks envoltorios fideos envoltorio de fideos bolsa bolsas bolsa de plastico film potes de plastico pote de plastico bandeja de plastico bandejas de plastico tuppers tupper telgopor bandeja de telgopor pote de telgopor cds dvds cd dvd paquetes de cafe paquete de cafe tuppers snacks bidon bidones lavandina",
         logo: "img/logo-jxb.webp",
         imagen: "img/jovenesporbariloche.webp",
@@ -296,20 +303,20 @@ const listaOrganizaciones = [
             { tipo: "instagram", usuario: "jovenesporbariloche" },
             {
                 tipo: "desplegable-ecopuntos",
-                titulo: "Ver mas Ecopuntos",
+                titulo: "Ver más Ecopuntos",
                 sedes: [
                     { nombre: "Pioneros 2350 (CONICET)", horario: "Lun-Vie 9-17hs", url: "https://www.google.com/maps/d/u/1/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.1362522%2C-71.3393223&z=16" },
-                    { nombre: "Junta Vecinal Altos del Condor", horario: "Jueves de 19 a 20hs", url: "https://www.google.com/maps/d/u/1/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.1326636%2C-71.2674977&z=16" },
+                    { nombre: "Junta Vecinal Altos del Cóndor", horario: "Jueves 19 a 20hs", url: "https://www.google.com/maps/d/u/1/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.1326636%2C-71.2674977&z=16" },
                     { nombre: "Junta Vecinal Melipal", horario: "Todos los días hasta las 20:00hs", url: "https://www.google.com/maps/d/u/1/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.133323%2C-71.3543389&z=16" },
                     { nombre: "Club Pehuenes (Exclusivo Socios)", horario: "Horarios del club", url: "https://www.google.com/maps/d/u/1/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.1266176%2C-71.4040048&z=16" },
-                    { nombre: "Junta Vecinal Pinar del Lago", horario: "Lun-Vie 9-17hs", url: "https://www.google.com/maps/d/u/1/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.125668200000014%2C-71.37057500000003&z=13" }
+                    { nombre: "Junta Vecinal Pinar del Lago", horario: "Lun-Vie 9-17hs", url: "https://www.google.com/maps/d/u/1/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.1256682%2C-71.370575&z=13" }
                 ]
             }
         ]
     },
     {
         categoria: "reciclaje",
-        materiales: "Envases de limpiadores, detergente, jabón líquido, shampoo, acondicionadores y lavandina. Botellas de aguas, gaseosas, bebidas deportivas y reutilizables. Tapitas, bolsas de súper y comercios, sachets de leche, film envoltorio y termocontraible, envases flexibles (azúcar, pan, etc). Envoltorios de galletas, fideos, snacks y transparentes. Contenedores de alimentos/comida, cubiertos descartables, baldes, envases lácteos/descartables, bandejas, vasos térmicos, potes de helado, envases de repuestos para recarga, sorbetes, mamaderas, armazones de anteojos, tarjetas de crédito/débito, calzados, suelas, aislantes para cables y CD / DVD.",
+        materiales: "Envases de limpiadores, detergente, jabón líquido, shampoo, acondicionadores y lavandina. Botellas de agua, gaseosas, bebidas deportivas y reutilizables. Tapitas, bolsas de súper y comercios, sachets de leche, film envoltorio y termocontraíble, envases flexibles (azúcar, pan, etc). Envoltorios de galletas, fideos, snacks y transparentes. Contenedores de alimentos/comida, cubiertos descartables, baldes, envases lácteos/descartables, bandejas, vasos térmicos, potes de helado, envases de repuestos para recarga, sorbetes, mamaderas, armazones de anteojos, tarjetas de crédito/débito, calzados, suelas, aislantes para cables y CD / DVD.",
         tags: "buply anonima albarracin botella pet botellas pets envase de shampoo envases de shampoo envases de acondicionador envase de acondicionador shampoo acondicionador bolsa de snacks bolsas de snacks envoltorios envoltorio envoltorios de snacks envoltorio de snacks envoltorios fideos envoltorio de fideos bolsa bolsas bolsa de plastico film potes de plastico pote de plastico bandeja de plastico bandejas de plastico tuppers tupper telgopor bandeja de telgopor pote de telgopor cds dvds cd dvd paquetes de cafe paquete de cafe tuppers snacks limpiadores detergente jabon liquido lavandina agua gaseosa bebida deportiva reutilizable tapitas bolsas super comercios sachets leche flexible azucar pan contenedores alimentos comida cubiertos descartables baldes lacteos vasos termicos helado repuestos recarga sorbetes mamaderas anteojos tarjetas credito debito calzados suelas aislantes cables",
         logo: "img/logo-buply.webp",
         imagen: "img/buply.webp",
@@ -357,15 +364,15 @@ const listaOrganizaciones = [
         nombre: "ELECTRORECICLAJE",
         elementos: [
             { tipo: "link-geo", url: "https://www.google.com/maps/d/u/1/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.1442791%2C-71.3208962&z=16", texto: "Campichuelo y Suiza" },
-            { tipo: "texto", icono: "fa-solid fa-graduation-cap", texto: "<strong>Proyecto Educativo:</strong> Estudiantes de electrónica reutilizan los componentes para reparación, aprendizaje y proyectos didácticos." },
-            { tipo: "texto", icono: "fa-solid fa-heart-pulse", texto: "Reciben equipos tanto <strong>rotas como en funcionamiento</strong>." },
+            { tipo: "texto", icono: "fa-solid fa-graduation-cap", texto: "<strong>Proyecto Educativo:</strong> Estudiantes de electrónica reutilizan componentes para reparación y aprendizaje." },
+            { tipo: "texto", icono: "fa-solid fa-heart-pulse", texto: "Reciben equipos tanto <strong>rotos como en funcionamiento</strong>." },
             { tipo: "whatsapp", numero: "2944594891" }
         ]
     },
     {
         categoria: "especiales",
         materiales: "Aceite vegetal usado de cocina (dentro de botellas plásticas cerradas).",
-        tags: "aceite rba ambiental domicilio aceite de cocina usado",
+        tags: "aceite rba ambiental domicilio aceite de cocina usado vegetal botellas",
         logo: "img/logo-rba.webp",
         imagen: "img/aceiteusado.webp",
         nombre: "ACEITE - RBA AMBIENTAL",
@@ -390,7 +397,7 @@ const listaOrganizaciones = [
 ];
 
 // =========================================================================
-// 4. RENDERIZACIÓN DE TARJETAS ORG
+// 4. RENDERIZACIÓN DINÁMICA DE TARJETAS
 // =========================================================================
 function generarTarjetasHTML() {
     const contenedor = document.getElementById('contenedor-tarjetas');
@@ -404,7 +411,7 @@ function generarTarjetasHTML() {
                 return `<p class="info-p"><i class="${el.icono}"></i> ${el.texto}</p>`;
             } else if (el.tipo === 'whatsapp') {
                 return `<p class="info-p"><a href="https://wa.me/549${el.numero}" target="_blank" class="whatsapp-link"><i class="fa-brands fa-whatsapp"></i> ${el.numero}</a></p>`;
-            } else if (el.tipo === 'email') { 
+            } else if (el.tipo === 'email') {
                 return `<p class="info-p"><a href="mailto:${el.correo}" class="geo-link" style="color: #4a5568;"><i class="fa-regular fa-envelope"></i> ${el.correo}</a></p>`;
             } else if (el.tipo === 'instagram') {
                 return `<a href="https://www.instagram.com/${el.usuario}/" target="_blank" class="info-link instagram-link"><i class="fa-brands fa-instagram"></i> @${el.usuario}</a>`;
@@ -531,15 +538,12 @@ function normalizarTermino(palabra) {
     return t;
 }
 
-document.getElementById('buscador').addEventListener('input', function (e) {
-    textoBusqueda = e.target.value;
-    aplicarFiltrosCombinados();
-});
-
 function filtrarCategoria(e, categoriaSeleccionada) {
     categoriaActiva = categoriaSeleccionada;
     document.querySelectorAll('.btn-filter').forEach(btn => btn.classList.remove('active'));
-    e.currentTarget.classList.add('active');
+    if (e && e.currentTarget) {
+        e.currentTarget.classList.add('active');
+    }
     aplicarFiltrosCombinados();
 }
 
@@ -555,42 +559,92 @@ function aplicarFiltrosCombinados() {
 }
 
 // =========================================================================
-// 6. INICIALIZACIÓN COMPLETA Y BANNER PWA
+// 6. INICIALIZACIÓN Y GESTIÓN DE BANNER PWA Y NOTIFICACIONES
 // =========================================================================
 let deferredPrompt;
+
 document.addEventListener("DOMContentLoaded", function () {
-    verificarYMostrarNovedades(); 
+    // Inicializar secciones de la App
+    verificarYMostrarNovedades();
     generarTarjetasHTML();
     tarjetas = document.querySelectorAll('.card');
 
+    // Event listener del buscador
+    const inputBuscador = document.getElementById('buscador');
+    if (inputBuscador) {
+        inputBuscador.addEventListener('input', function (e) {
+            textoBusqueda = e.target.value;
+            aplicarFiltrosCombinados();
+        });
+    }
+
+    // =========================================================================
+    // LÓGICA DEL BOTÓN DE NOTIFICACIONES (ONESIGNAL)
+    // =========================================================================
+    const btnToggle = document.getElementById('btn-onesignal-toggle');
+
+    if (btnToggle) {
+        btnToggle.addEventListener('click', async () => {
+            if (!OneSignal.Notifications.isPushSupported()) {
+                alert("Tu navegador no soporta notificaciones push.");
+                return;
+            }
+            const isSubscribed = OneSignal.User.PushSubscription.optedIn;
+            if (isSubscribed) {
+                await OneSignal.User.PushSubscription.optOut();
+                alert("Notificaciones desactivadas correctamente.");
+            } else {
+                await OneSignal.User.PushSubscription.optIn();
+                if (OneSignal.Notifications.permission !== true) {
+                    await OneSignal.Notifications.requestPermission();
+                }
+                if (OneSignal.User.PushSubscription.optedIn) {
+                    alert("¡Listo! Notificaciones activadas con éxito. 🎉");
+                }
+            }
+        });
+    }
+
+    // Configuración del Banner de Instalación PWA
     const banner = document.getElementById('banner-instalar');
     const btnInstalar = document.getElementById('btn-instalar-accion');
     const btnCerrar = document.getElementById('btn-cerrar-banner');
     const textoInstrucciones = document.getElementById('instrucciones-instalacion');
 
-    const ocultarBannerPermanente = localStorage.getItem('ocultarBannerRecicla') === 'true';
-    const esModoApp = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+    if (banner && btnInstalar && btnCerrar) {
+        const ocultarBannerPermanente = localStorage.getItem('ocultarBannerRecicla') === 'true';
+        const esModoApp = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
 
-    if (esModoApp || ocultarBannerPermanente) return;
+        if (!esModoApp && !ocultarBannerPermanente) {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            const esIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
 
-    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    const esIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+                banner.style.display = 'block';
+            });
 
-    window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault(); deferredPrompt = e; banner.style.display = 'block';
-    });
-    if (esIOS && !esModoApp) { banner.style.display = 'block'; }
+            if (esIOS) {
+                banner.style.display = 'block';
+            }
 
-    btnInstalar.addEventListener('click', async () => {
-        if (deferredPrompt) {
-            deferredPrompt.prompt();
-            const { outcome } = await deferredPrompt.userChoice;
-            if (outcome === 'accepted') banner.style.display = 'none';
-            deferredPrompt = null;
-        } else if (esIOS) {
-            textoInstrucciones.innerHTML = 'Tocá el botón <strong>Compartir</strong> <i class="fa-solid fa-share-from-square"></i> y elegí <strong>"Agregar a inicio"</strong>.';
-            btnInstalar.style.display = 'none';
+            btnInstalar.addEventListener('click', async () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    if (outcome === 'accepted') banner.style.display = 'none';
+                    deferredPrompt = null;
+                } else if (esIOS && textoInstrucciones) {
+                    textoInstrucciones.innerHTML = 'Tocá el botón <strong>Compartir</strong> <i class="fa-solid fa-share-from-square"></i> y elegí <strong>"Agregar a inicio"</strong>.';
+                    btnInstalar.style.display = 'none';
+                }
+            });
+
+            btnCerrar.addEventListener('click', function () {
+                banner.style.display = 'none';
+                localStorage.setItem('ocultarBannerRecicla', 'true');
+            });
         }
-    });
-    btnCerrar.addEventListener('click', function () { banner.style.display = 'none'; localStorage.setItem('ocultarBannerRecicla', 'true'); });
+    }
 });
