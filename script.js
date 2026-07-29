@@ -97,7 +97,11 @@ async function verificarYMostrarNovedades() {
         hoy.setHours(0, 0, 0, 0);
 
         const novedadesVigentes = listaNovedadesDinamica.filter(nov => {
-            if (!nov.fechaLimite) return false;
+            // Si la celda está totalmente vacía o no tiene título, la ignoramos
+            if (!nov.titulo) return false;
+
+            // Si no tiene fecha límite definida, la mostramos igual
+            if (!nov.fechaLimite) return true;
 
             let partes = [];
             let fechaLimiteDate;
@@ -113,6 +117,8 @@ async function verificarYMostrarNovedades() {
             }
 
             fechaLimiteDate.setHours(0, 0, 0, 0);
+
+            // Muestra en el slider todo lo que tenga fecha mayor o igual a hoy
             return fechaLimiteDate >= hoy;
         });
 
