@@ -399,7 +399,21 @@ const listaOrganizaciones = [
             { tipo: "texto", icono: "fa-solid fa-laptop-code", texto: "Reciclaje de RAEEs y tecnología en desuso" },
             { tipo: "whatsapp", numero: "2944652004" }
         ]
-    }
+    },
+    {
+    categoria: "reciclaje",
+    materiales: "Envases de limpiadores, detergente, jabón líquido, shampoo, acondicionadores y lavandina. Botellas de agua, gaseosas, bebidas deportivas y reutilizables. Tapitas, bolsas de súper y comercios, sachets de leche, film envoltorio y termocontraíble, envases flexibles (azúcar, pan, etc). Envoltorios de galletas, fideos, snacks y transparentes. Contenedores de alimentos/comida, cubiertos descartables, baldes, envases lácteos/descartables, bandejas, vasos térmicos, potes de helado, envases de repuestos para recarga, sorbetes, mamaderas, armazones de anteojos, tarjetas de crédito/débito, calzados, suelas, aislantes para cables y CD / DVD.",
+    tags: "buply mercado diego neil ruta 40 sur intendencia anonima albarracin botella pet botellas pets envase de shampoo envases de shampoo envases de acondicionador envase de acondicionador shampoo acondicionador bolsa de snacks bolsas de snacks envoltorios envoltorio envoltorios de snacks envoltorio de snacks envoltorios fideos envoltorio de fideos bolsa bolsas bolsa de plastico film potes de plastico pote de plastico bandeja de plastico bandejas de plastico tuppers tupper telgopor bandeja de telgopor pote de telgopor cds dvds cd dvd paquetes de cafe paquete de cafe tuppers snacks limpiadores detergente jabon liquido lavandina agua gaseosa bebida deportiva reutilizable tapitas bolsas super comercios sachets leche flexible azucar pan contenedores alimentos comida cubiertos descartables baldes lacteos vasos termicos helado repuestos recarga sorbetes mamaderas anteojos tarjetas credito debito calzados suelas aislantes cables",
+    logo: "img/logo-mercado.webp",
+    imagen: "img/buply.webp",
+    nombre: "Mercado",
+    elementos: [
+        { tipo: "link-geo", url: "https://maps.google.com/?q=Diego+Neil+3022+Bariloche", texto: "Diego Neil 3022 (Ruta 40 Sur)" },
+        { tipo: "texto", icono: "fa-regular fa-clock", texto: "Lun-Sáb 9-21hs / Dom y Fer 9-14hs" },
+        { tipo: "whatsapp", numero: "1154731689" }
+    ]
+}
+    
 ];
 
 // =========================================================================
