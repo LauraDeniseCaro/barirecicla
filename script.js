@@ -590,25 +590,52 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnToggle = document.getElementById('btn-onesignal-toggle');
 
     if (btnToggle) {
-        btnToggle.addEventListener('click', async () => {
-            if (!OneSignal.Notifications.isPushSupported()) {
-                alert("Tu navegador no soporta notificaciones push.");
-                return;
-            }
-            const isSubscribed = OneSignal.User.PushSubscription.optedIn;
-            if (isSubscribed) {
-                await OneSignal.User.PushSubscription.optOut();
-                alert("Notificaciones desactivadas correctamente.");
-            } else {
-                await OneSignal.User.PushSubscription.optIn();
-                if (OneSignal.Notifications.permission !== true) {
-                    await OneSignal.Notifications.requestPermission();
+        window.OneSignalDeferred = window.OneSignalDeferred || [];
+
+        // Sincronizar el texto del botón según el estado real al cargar la página
+        OneSignalDeferred.push(async function (OneSignal) {
+            actualizarEstadoBoton(OneSignal.User.PushSubscription.optedIn);
+
+            // Escuchar cambios de suscripción en tiempo real
+            OneSignal.User.PushSubscription.addEventListener("change", function (event) {
+                actualizarEstadoBoton(event.current.optedIn);
+            });
+        });
+
+        btnToggle.addEventListener('click', () => {
+            OneSignalDeferred.push(async function (OneSignal) {
+                if (!OneSignal.Notifications.isPushSupported()) {
+                    alert("Tu navegador no soporta notificaciones push.");
+                    return;
                 }
-                if (OneSignal.User.PushSubscription.optedIn) {
+
+                const estadoActual = OneSignal.User.PushSubscription.optedIn;
+
+                if (estadoActual) {
+                    // DESUSCRIBIR
+                    await OneSignal.User.PushSubscription.optOut();
+                    alert("Notificaciones desactivadas correctamente.");
+                } else {
+                    // SUSCRIBIR
+                    if (OneSignal.Notifications.permission !== "granted") {
+                        await OneSignal.Notifications.requestPermission();
+                    }
+                    await OneSignal.User.PushSubscription.optIn();
                     alert("¡Listo! Notificaciones activadas con éxito. 🎉");
                 }
-            }
+            });
         });
+    }
+
+    function actualizarEstadoBoton(isSubscribed) {
+        if (!btnToggle) return;
+        if (isSubscribed) {
+            btnToggle.textContent = "Desactivar Notificaciones";
+            btnToggle.classList.add("activo");
+        } else {
+            btnToggle.textContent = "Activar Notificaciones";
+            btnToggle.classList.remove("activo");
+        }
     }
 
     // Configuración del Banner de Instalación PWA
