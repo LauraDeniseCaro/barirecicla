@@ -78,23 +78,6 @@
                     OneSignal.User.PushSubscription.addEventListener("change", actualizarEstadoBoton);
                     await actualizarEstadoBoton();
                 }
-
-                btnToggle.addEventListener('click', async () => {
-                    if (!OneSignal.Notifications.isPushSupported()) {
-                        alert("Tu navegador no soporta notificaciones push.");
-                        return;
-                    }
-                    const isSubscribed = OneSignal.User.PushSubscription.optedIn;
-                    if (isSubscribed) {
-                        await OneSignal.User.PushSubscription.optOut();
-                    } else {
-                        await OneSignal.User.PushSubscription.optIn();
-                        if (OneSignal.Notifications.permission !== true) {
-                            await OneSignal.Notifications.requestPermission();
-                        }
-                    }
-                    actualizarEstadoBoton();
-                });
             }
         });
     </script>
