@@ -85,14 +85,20 @@
 
 <body>
     <div class="app-container">
-
         <!-- HEADER OVERHAUL PREMIUM -->
         <div class="header-container">
-            <img src="img/baritoxico-logo.webp" class="brand-logo" alt="Logo Recicla Bariloche">
-            <div class="header-text-wrapper">
-                <h1>Baritoxico Recicla</h1>
-                <h2>Tu guía de puntos verdes</h2>
+            <div class="header-brand-group">
+                <img src="img/baritoxico-logo.webp" class="brand-logo" alt="Logo Recicla Bariloche">
+                <div class="header-text-wrapper">
+                    <h1>Baritoxico Recicla</h1>
+                    <h2>Tu guía de puntos verdes</h2>
+                </div>
             </div>
+
+            <a href="https://cafecito.app/baritoxico" target="_blank" rel="noopener" class="btn-cafecito-header"
+                title="Invitanos un Cafecito">
+                ☕ <span>Cafecito</span>
+            </a>
         </div>
 
         <!-- BOX INTRO CON ONDA -->
@@ -113,13 +119,17 @@
 
         <!-- SECCIÓN DE NOVEDADES Y SUSCRIPCIÓN PUSH -->
         <div class="novedades-wrapper">
-            <div class="suscripcion-fija-box" style="display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap;">
-                <p style="margin: 0;"><i class="fa-solid fa-bell"></i> ¿Querés recibir las novedades al instante en tu celular?</p>
+            <div class="suscripcion-fija-box"
+                style="display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <p style="margin: 0;"><i class="fa-solid fa-bell"></i> ¿Querés recibir las novedades al instante en tu
+                    celular?</p>
                 <div style="display: flex; align-items: center; gap: 8px;">
                     <button id="btn-onesignal-toggle" class="btn-suscripcion-toggle">
                         <i class="fa-solid fa-bell"></i> <span id="btn-onesignal-text">Activar notificaciones</span>
                     </button>
-                    <button onclick="this.closest('.suscripcion-fija-box').style.display='none'" style="background: none; border: none; color: #666; font-size: 1.2rem; cursor: pointer;" title="Cerrar">
+                    <button onclick="this.closest('.suscripcion-fija-box').style.display='none'"
+                        style="background: none; border: none; color: #666; font-size: 1.2rem; cursor: pointer;"
+                        title="Cerrar">
                         &times;
                     </button>
                 </div>

@@ -28,6 +28,7 @@ const URL_GOOGLE_SHEETS_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1v
 let currentSlide = 0;
 let totalNovedadesVigentes = 0;
 
+// Función para procesar y limpiar el CSV de Google Sheets
 function parsearCSV(texto) {
     const lineas = [];
     let lineaActual = [];
@@ -83,6 +84,98 @@ function parsearCSV(texto) {
     return resultado;
 }
 
+// Función para descartar la novedad desde el botón
+function descartarNovedad(boton) {
+    const slide = boton.closest('.slide-item');
+    if (slide) slide.style.display = 'none';
+}
+
+// Generador del HTML de cada tarjeta de novedad (Diseño de 2 columnas y contactos)
+function crearTarjetaNovedad(item) {
+  // 1. WhatsApp / Teléfono
+  let telefonoHtml = '';
+  if (item.telefono) {
+    const numLimpio = item.telefono.toString().replace(/[^0-9]/g, '');
+    telefonoHtml = `
+      <a href="https://wa.me/${numLimpio}" target="_blank" rel="noopener" class="contacto-item whatsapp-link">
+        <i class="fab fa-whatsapp"></i> ${item.telefono}
+      </a>`;
+  }
+
+  // 2. Instagram
+  let instagramHtml = '';
+  if (item.instagram) {
+    const instaUser = item.instagram
+      .replace('https://www.instagram.com/', '')
+      .replace('https://instagram.com/', '')
+      .replace('@', '')
+      .replace(/\/$/, '')
+      .trim();
+    instagramHtml = `
+      <a href="https://www.instagram.com/${instaUser}" target="_blank" rel="noopener" class="contacto-item instagram-link">
+        <i class="fab fa-instagram"></i> @${instaUser}
+      </a>`;
+  }
+
+  // 3. Dirección opcional (Google Maps)
+  let direccionHtml = '';
+  if (item.direccion) {
+    const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.direccion)}`;
+    direccionHtml = `
+      <a href="${mapsUrl}" target="_blank" rel="noopener" class="contacto-item direccion-link">
+        <i class="fas fa-map-marker-alt"></i> ${item.direccion}
+      </a>`;
+  }
+
+  // Caja de datos de contacto
+  const tieneContactos = telefonoHtml || instagramHtml || direccionHtml;
+  const contactosBlock = tieneContactos ? `
+    <div class="novedades-contactos-box">
+      <span class="contactos-titulo">Datos de contacto</span>
+      ${telefonoHtml}
+      ${instagramHtml}
+      ${direccionHtml}
+    </div>` : '';
+
+  // Imagen derecha (Flyer)
+  let imagenHtml = '';
+  if (item.imagen) {
+    const imagenSana = (item.imagen.startsWith('http://') || item.imagen.startsWith('https://') || item.imagen.startsWith('./')) ? encodeURI(item.imagen) : '';
+    if (imagenSana) {
+      imagenHtml = `
+        <div class="novedades-col-img">
+          <img src="${imagenSana}" alt="${item.titulo || 'Novedad'}" loading="lazy" onerror="this.parentElement.style.display='none';">
+        </div>`;
+    }
+  }
+
+  const colorBadgeReal = (item.colorBadge && item.colorBadge.startsWith('#')) ? item.colorBadge : 'var(--verde-medio)';
+
+  return `
+    <div class="slide-item ${imagenHtml ? 'con-imagen-flyer' : ''}">
+      <!-- COLUMNA IZQUIERDA: INFORMACIÓN -->
+      <div class="novedades-col-info">
+        <div class="novedades-header">
+          <h4>${item.titulo || 'Novedad'}</h4>
+          ${item.badge ? `<span class="novedades-badge" style="background-color: ${colorBadgeReal}">${item.badge}</span>` : ''}
+        </div>
+
+        ${item.descripcion ? `<p class="novedades-descripcion">${item.descripcion}</p>` : ''}
+
+        ${contactosBlock}
+
+        <div class="novedades-acciones">
+          <button class="novedades-btn-descartar" onclick="descartarNovedad(this)">Descartar</button>
+        </div>
+      </div>
+
+      <!-- COLUMNA DERECHA: FLYER -->
+      ${imagenHtml}
+    </div>
+  `;
+}
+
+// Función principal para obtener, filtrar y renderizar las novedades
 async function verificarYMostrarNovedades() {
     const contenedor = document.getElementById('contenedor-novedades');
     if (!contenedor) return;
@@ -97,10 +190,7 @@ async function verificarYMostrarNovedades() {
         hoy.setHours(0, 0, 0, 0);
 
         const novedadesVigentes = listaNovedadesDinamica.filter(nov => {
-            // Si la celda está totalmente vacía o no tiene título, la ignoramos
             if (!nov.titulo) return false;
-
-            // Si no tiene fecha límite definida, la mostramos igual
             if (!nov.fechaLimite) return true;
 
             let partes = [];
@@ -117,14 +207,10 @@ async function verificarYMostrarNovedades() {
             }
 
             fechaLimiteDate.setHours(0, 0, 0, 0);
-
-            // Muestra en el slider todo lo que tenga fecha mayor o igual a hoy
             return fechaLimiteDate >= hoy;
         });
 
-        // 🟢 AQUÍ SE TOMAN LAS ÚLTIMAS 3 NOVEDADES
         const ultimasNovedades = novedadesVigentes.reverse().slice(0, 3);
-
         totalNovedadesVigentes = ultimasNovedades.length;
 
         if (totalNovedadesVigentes === 0) {
@@ -133,45 +219,8 @@ async function verificarYMostrarNovedades() {
             return;
         }
 
-        // 🟢 SE USA 'ultimasNovedades' PARA GENERAR EL SLIDER
-        let slidesHTML = ultimasNovedades.map((nov, index) => {
-            const tituloSano = sanitizarHTML(nov.titulo || 'Novedad');
-            const badgeSana = sanitizarHTML(nov.badge || 'Info');
-            const descSana = sanitizarHTML(nov.descripcion || '');
-            const textoLinkSano = sanitizarHTML(nov.textoLink || 'Más info / Suscribirme');
-
-            const linkSano = (nov.link && (nov.link.startsWith('http://') || nov.link.startsWith('https://'))) ? encodeURI(nov.link) : 'https://wa.me/5492944916790';
-            const imagenSana = (nov.imagen && (nov.imagen.startsWith('http://') || nov.imagen.startsWith('https://') || nov.imagen.startsWith('./'))) ? encodeURI(nov.imagen) : '';
-
-            const estructuraImagen = imagenSana ? `
-                <div class="novedades-col-img">
-                    <img src="${imagenSana}" alt="Flyer ${tituloSano}" onerror="this.parentElement.style.display='none';">
-                </div>
-            ` : '';
-
-            const colorBadgeReal = (nov.colorBadge && nov.colorBadge.startsWith('#')) ? nov.colorBadge : '#40916c';
-
-            return `
-                <div class="slide-item ${imagenSana ? 'con-imagen-flyer' : ''}">
-                    <div class="novedades-col-texto">
-                        <div class="novedades-header">
-                            <h4>${tituloSano}</h4>
-                            <span class="novedades-badge" style="background-color: ${colorBadgeReal}">${badgeSana}</span>
-                        </div>
-                        <p>${descSana}</p>
-                        <div style="display: flex; gap: 10px; align-items: center; margin-top: 10px; flex-wrap: wrap;">
-                            <a href="${linkSano}" target="_blank" class="novedades-btn-accion">
-                                <i class="fa-solid fa-circle-info"></i> ${textoLinkSano}
-                            </a>
-                            <button onclick="this.closest('.slide-item').style.display='none'" style="background: transparent; border: 1px solid #ccc; color: #555; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-size: 0.8rem;">
-                                Descartar
-                            </button>
-                        </div>
-                    </div>
-                    ${estructuraImagen}
-                </div>
-            `;
-        }).join('');
+        // Renderizado usando la función modularizada
+        let slidesHTML = ultimasNovedades.map(nov => crearTarjetaNovedad(nov)).join('');
 
         let controlesHTML = "";
         if (totalNovedadesVigentes > 1) {
@@ -219,6 +268,7 @@ async function verificarYMostrarNovedades() {
     }
 }
 
+// Configuración de interacción y navegación del slider
 function configurarScrollTactil() {
     const contenedorSlides = document.getElementById('slides-container-id');
     if (!contenedorSlides) return;
@@ -334,6 +384,19 @@ const listaOrganizaciones = [
         ]
     },
     {
+        categoria: "reciclaje",
+        materiales: "Envases de limpiadores, detergente, jabón líquido, shampoo, acondicionadores y lavandina. Botellas de agua, gaseosas, bebidas deportivas y reutilizables. Tapitas, bolsas de súper y comercios, sachets de leche, film envoltorio y termocontraíble, envases flexibles (azúcar, pan, etc). Envoltorios de galletas, fideos, snacks y transparentes. Contenedores de alimentos/comida, cubiertos descartables, baldes, envases lácteos/descartables, bandejas, vasos térmicos, potes de helado, envases de repuestos para recarga, sorbetes, mamaderas, armazones de anteojos, tarjetas de crédito/débito, calzados, suelas, aislantes para cables y CD / DVD.",
+        tags: "buply mercado diego neil ruta 40 sur intendencia anonima albarracin botella pet botellas pets envase de shampoo envases de shampoo envases de acondicionador envase de acondicionador shampoo acondicionador bolsa de snacks bolsas de snacks envoltorios envoltorio envoltorios de snacks envoltorio de snacks envoltorios fideos envoltorio de fideos bolsa bolsas bolsa de plastico film potes de plastico pote de plastico bandeja de plastico bandejas de plastico tuppers tupper telgopor bandeja de telgopor pote de telgopor cds dvds cd dvd paquetes de cafe paquete de cafe tuppers snacks limpiadores detergente jabon liquido lavandina agua gaseosa bebida deportiva reutilizable tapitas bolsas super comercios sachets leche flexible azucar pan contenedores alimentos comida cubiertos descartables baldes lacteos vasos termicos helado repuestos recarga sorbetes mamaderas anteojos tarjetas credito debito calzados suelas aislantes cables",
+        logo: "img/logo-mercado.webp",
+        imagen: "img/buply.webp",
+        nombre: "Mercado",
+        elementos: [
+            { tipo: "link-geo", url: "https://www.google.com/maps/d/u/1/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.16359049933059%2C-71.32223291656493&z=14", texto: "Diego Neil 3022 (Ruta 40 Sur)" },
+            { tipo: "texto", icono: "fa-regular fa-clock", texto: "Lun-Sáb 9-21hs / Dom y Fer 9-14hs" },
+            { tipo: "whatsapp", numero: "1154731689" }
+        ]
+    },
+    {
         categoria: "compostaje",
         materiales: "Yerba, café, frutas, verduras, hojas, pasto, papel y cartón.",
         tags: "zona compost domicilio organicos frutas hojas hojas secas yerba cafe residuos organicos pasto papel sin tinta carton sin adhesivos verduras",
@@ -399,21 +462,7 @@ const listaOrganizaciones = [
             { tipo: "texto", icono: "fa-solid fa-laptop-code", texto: "Reciclaje de RAEEs y tecnología en desuso" },
             { tipo: "whatsapp", numero: "2944652004" }
         ]
-    },
-    {
-    categoria: "reciclaje",
-    materiales: "Envases de limpiadores, detergente, jabón líquido, shampoo, acondicionadores y lavandina. Botellas de agua, gaseosas, bebidas deportivas y reutilizables. Tapitas, bolsas de súper y comercios, sachets de leche, film envoltorio y termocontraíble, envases flexibles (azúcar, pan, etc). Envoltorios de galletas, fideos, snacks y transparentes. Contenedores de alimentos/comida, cubiertos descartables, baldes, envases lácteos/descartables, bandejas, vasos térmicos, potes de helado, envases de repuestos para recarga, sorbetes, mamaderas, armazones de anteojos, tarjetas de crédito/débito, calzados, suelas, aislantes para cables y CD / DVD.",
-    tags: "buply mercado diego neil ruta 40 sur intendencia anonima albarracin botella pet botellas pets envase de shampoo envases de shampoo envases de acondicionador envase de acondicionador shampoo acondicionador bolsa de snacks bolsas de snacks envoltorios envoltorio envoltorios de snacks envoltorio de snacks envoltorios fideos envoltorio de fideos bolsa bolsas bolsa de plastico film potes de plastico pote de plastico bandeja de plastico bandejas de plastico tuppers tupper telgopor bandeja de telgopor pote de telgopor cds dvds cd dvd paquetes de cafe paquete de cafe tuppers snacks limpiadores detergente jabon liquido lavandina agua gaseosa bebida deportiva reutilizable tapitas bolsas super comercios sachets leche flexible azucar pan contenedores alimentos comida cubiertos descartables baldes lacteos vasos termicos helado repuestos recarga sorbetes mamaderas anteojos tarjetas credito debito calzados suelas aislantes cables",
-    logo: "img/logo-mercado.webp",
-    imagen: "img/buply.webp",
-    nombre: "Mercado",
-    elementos: [
-        { tipo: "link-geo", url: "https://maps.google.com/?q=Diego+Neil+3022+Bariloche", texto: "Diego Neil 3022 (Ruta 40 Sur)" },
-        { tipo: "texto", icono: "fa-regular fa-clock", texto: "Lun-Sáb 9-21hs / Dom y Fer 9-14hs" },
-        { tipo: "whatsapp", numero: "1154731689" }
-    ]
-}
-    
+    }
 ];
 
 // =========================================================================
@@ -694,4 +743,8 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
     }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    verificarYMostrarNovedades();
 });
