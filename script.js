@@ -365,7 +365,11 @@ const listaOrganizaciones = [
                     { nombre: "Junta Vecinal Altos del Cóndor", horario: "Jueves 19 a 20hs", url: "https://www.google.com/maps/d/u/1/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.1326636%2C-71.2674977&z=16" },
                     { nombre: "Junta Vecinal Melipal", horario: "Todos los días hasta las 20:00hs", url: "https://www.google.com/maps/d/u/1/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.133323%2C-71.3543389&z=16" },
                     { nombre: "Club Pehuenes (Exclusivo Socios)", horario: "Horarios del club", url: "https://www.google.com/maps/d/u/1/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.1266176%2C-71.4040048&z=16" },
-                    { nombre: "Junta Vecinal Pinar del Lago", horario: "Lun-Vie 9-17hs", url: "https://www.google.com/maps/d/u/1/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.1256682%2C-71.370575&z=13" }
+                    { nombre: "Junta Vecinal Pinar del Lago", horario: "Lun-Vie 9-17hs", url: "https://www.google.com/maps/d/u/1/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.1256682%2C-71.370575&z=13" },
+                    { nombre: "Centro del Copiado", horario: "Lun-Vie 9-17hs", url: "https://www.google.com/maps/d/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.136999%2C-71.306574&z=16" },
+                    { nombre: "Centro Civico", horario: "Lun-Vie 9-17hs", url: "https://www.google.com/maps/d/edit?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.12021919099277%2C-71.30897725927734&z=13" },
+                    { nombre: "Junta Vecinal Barrio Unión", horario: "Lun-Vie 9-17hs", url: "https://www.google.com/maps/d/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.16304539999999%2C-71.3439178&z=16" },
+                    { nombre: "Barrio Valle Azul", horario: "Lun-Vie 9-17hs", url: "https://www.google.com/maps/d/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.16473759999998%2C-71.35128120000002&z=16" }
                 ]
             }
         ]
