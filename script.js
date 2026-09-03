@@ -326,7 +326,7 @@ const listaOrganizaciones = [
         imagen: "img/arb.webp",
         nombre: "ARB - RECICLADORES",
         elementos: [
-            { tipo: "link-geo", url: "https://www.google.com/maps/d/u/1/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.1750728%2C-71.354338&z=16", texto: "Vertedero Municipal" },
+            { tipo: "link-geo", url: "https://www.google.com/maps/search/?api=1&query=Vertedero+Municipal+Bariloche", texto: "Vertedero Municipal" },
             { tipo: "texto", icono: "fa-regular fa-clock", texto: "Lun-Vie 8-16hs / Sáb 8-12hs" },
             { tipo: "whatsapp", numero: "2944916790" },
             { tipo: "email", correo: "arbbariloche@gmail.com" },
@@ -341,7 +341,7 @@ const listaOrganizaciones = [
         imagen: "img/finor.webp",
         nombre: "FINOR SERVICIOS",
         elementos: [
-            { tipo: "link-geo", url: "https://www.google.com/maps/d/u/1/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.1341332%2C-71.2826891&z=16", texto: "Esandi 215" },
+            { tipo: "link-geo", url: "https://www.google.com/maps/search/?api=1&query=Esandi+215+Bariloche", texto: "Esandi 215" },
             { tipo: "texto", icono: "fa-regular fa-clock", texto: "Lun-Vie 9-16hs / Sáb 9-12hs" },
             { tipo: "instagram", usuario: "finorservicios" }
         ]
@@ -354,22 +354,22 @@ const listaOrganizaciones = [
         imagen: "img/jovenesporbariloche.webp",
         nombre: "JÓVENES POR BARILOCHE",
         elementos: [
-            { tipo: "link-geo", url: "https://www.google.com/maps/d/u/1/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.1600712%2C-71.3417896&z=16", texto: "Quinchamali 784 (Sede Oficial)" },
+            { tipo: "link-geo", url: "https://www.google.com/maps/search/?api=1&query=-41.160071,-71.341790", texto: "Quinchamali 784 (Sede Oficial)" },
             { tipo: "texto", icono: "fa-regular fa-clock", texto: "Lun-Vie 9-17hs" },
             { tipo: "instagram", usuario: "jovenesporbariloche" },
             {
                 tipo: "desplegable-ecopuntos",
                 titulo: "Ver más Ecopuntos",
                 sedes: [
-                    { nombre: "Pioneros 2350 (CONICET)", horario: "Lun-Vie 9-17hs", url: "https://www.google.com/maps/d/u/1/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.1362522%2C-71.3393223&z=16" },
-                    { nombre: "Junta Vecinal Altos del Cóndor", horario: "Jueves 19 a 20hs", url: "https://www.google.com/maps/d/u/1/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.1326636%2C-71.2674977&z=16" },
-                    { nombre: "Junta Vecinal Melipal", horario: "Todos los días hasta las 20:00hs", url: "https://www.google.com/maps/d/u/1/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.133323%2C-71.3543389&z=16" },
-                    { nombre: "Club Pehuenes (Exclusivo Socios)", horario: "Horarios del club", url: "https://www.google.com/maps/d/u/1/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.1266176%2C-71.4040048&z=16" },
-                    { nombre: "Junta Vecinal Pinar del Lago", horario: "Lun-Vie 9-17hs", url: "https://www.google.com/maps/d/u/1/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.1256682%2C-71.370575&z=13" },
-                    { nombre: "Centro del Copiado", horario: "Lun-Vie 9-17hs", url: "https://www.google.com/maps/d/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.136999%2C-71.306574&z=16" },
-                    { nombre: "Centro Civico", horario: "Lun-Vie 9-17hs", url: "https://www.google.com/maps/d/edit?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.12021919099277%2C-71.30897725927734&z=13" },
-                    { nombre: "Junta Vecinal Barrio Unión", horario: "Lun-Vie 9-17hs", url: "https://www.google.com/maps/d/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.16304539999999%2C-71.3439178&z=16" },
-                    { nombre: "Barrio Valle Azul", horario: "Lun-Vie 9-17hs", url: "https://www.google.com/maps/d/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.16473759999998%2C-71.35128120000002&z=16" }
+                    { nombre: "Pioneros 2350 (CONICET)", horario: "Lun-Vie 9-17hs", url: "https://www.google.com/maps/search/?api=1&query=Avenida+de+los+Pioneros+2350+Bariloche" },
+                    { nombre: "Junta Vecinal Altos del Cóndor", horario: "Jueves 19 a 20hs", url: "https://www.google.com/maps/search/?api=1&query=Junta+Vecinal+Altos+del+Condor+Bariloche" },
+                    { nombre: "Junta Vecinal Melipal", horario: "Todos los días hasta las 20:00hs", url: "https://www.google.com/maps/search/?api=1&query=Junta+Vecinal+Melipal+Bariloche" },
+                    { nombre: "Club Pehuenes (Exclusivo Socios)", horario: "Horarios del club", url: "https://www.google.com/maps/search/?api=1&query=Club+Los+Pehuenes+Bariloche" },
+                    { nombre: "Junta Vecinal Pinar del Lago", horario: "Lun-Vie 9-17hs", url: "https://www.google.com/maps/search/?api=1&query=Junta+Vecinal+Pinar+del+Lago+Bariloche" },
+                    { nombre: "Centro del Copiado", horario: "Lun-Vie 9-17hs", url: "https://www.google.com/maps/search/?api=1&query=Centro+del+Copiado+Bariloche" },
+                    { nombre: "Centro Civico", horario: "Lun-Vie 9-17hs", url: "https://www.google.com/maps/search/?api=1&query=Centro+Civico+Bariloche" },
+                    { nombre: "Junta Vecinal Barrio Unión", horario: "Lun-Vie 9-17hs", url: "https://www.google.com/maps/search/?api=1&query=Pecho+Colorado+711,+San+Carlos+de+Bariloche" },
+                    { nombre: "Barrio Valle Azul", horario: "Lun-Vie 9-17hs", url: "https://www.google.com/maps/search/?api=1&query=Cascada+de+los+Cesares+816,+San+Carlos+de+Bariloche" }
                 ]
             }
         ]
@@ -382,7 +382,7 @@ const listaOrganizaciones = [
         imagen: "img/buply.webp",
         nombre: "BUPLY (LA ANÓNIMA)",
         elementos: [
-            { tipo: "link-geo", url: "https://www.google.com/maps/d/u/1/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.1400806%2C-71.3012945&z=16", texto: "Albarracín 601" },
+            { tipo: "link-geo", url: "https://www.google.com/maps/search/?api=1&query=Albarracin+601+Bariloche", texto: "Albarracín 601" },
             { tipo: "texto", icono: "fa-regular fa-clock", texto: "Lun-Vie 10-18hs / Sáb 10-14hs" },
             { tipo: "instagram", usuario: "buply.ar" }
         ]
@@ -395,7 +395,7 @@ const listaOrganizaciones = [
         imagen: "img/buply.webp",
         nombre: "Mercado",
         elementos: [
-            { tipo: "link-geo", url: "https://www.google.com/maps/d/u/1/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.16359049933059%2C-71.32223291656493&z=14", texto: "Diego Neil 3022 (Ruta 40 Sur)" },
+            { tipo: "link-geo", url: "https://www.google.com/maps/search/?api=1&query=Diego+Neil+3022+Bariloche", texto: "Diego Neil 3022 (Ruta 40 Sur)" },
             { tipo: "texto", icono: "fa-regular fa-clock", texto: "Lun-Sáb 9-21hs / Dom y Fer 9-14hs" },
             { tipo: "whatsapp", numero: "1154731689" }
         ]
@@ -423,8 +423,8 @@ const listaOrganizaciones = [
         nombre: "COMUNIDAD COMPOST",
         elementos: [
             { tipo: "texto", icono: "fa-solid fa-gift", texto: "Composteras comunitarias gratuitas" },
-            { tipo: "html", html: `<p class="info-p"><a href="https://www.google.com/maps/d/u/1/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.1541256%2C-71.3165348&z=16" target="_blank" class="geo-link"><i class="fa-solid fa-location-dot"></i> B° Vuriloche</a> <i class="fa-regular fa-clock inline-clock"></i> Miér 18:30hs</p>` },
-            { tipo: "html", html: `<p class="info-p"><a href="https://www.google.com/maps/d/u/1/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.1680663%2C-71.3498344&z=16" target="_blank" class="geo-link"><i class="fa-solid fa-location-dot"></i> B° Valle Azul</a> <i class="fa-regular fa-clock inline-clock"></i> Sáb 17:00hs</p>` },
+            { tipo: "html", html: `<p class="info-p"><a href="https://www.google.com/maps/search/?api=1&query=-41.154126,-71.316535" target="_blank" class="geo-link"><i class="fa-solid fa-location-dot"></i> B° Vuriloche</a> <i class="fa-regular fa-clock inline-clock"></i> Miér 18:30hs</p>` },
+            { tipo: "html", html: `<p class="info-p"><a href="https://www.google.com/maps/search/?api=1&query=-41.167938,-71.350288" target="_blank" class="geo-link"><i class="fa-solid fa-location-dot"></i> B° Valle Azul</a> <i class="fa-regular fa-clock inline-clock"></i> Sáb 17:00hs</p>` },
             { tipo: "instagram", usuario: "comunidadcompost" }
         ]
     },
@@ -436,7 +436,7 @@ const listaOrganizaciones = [
         imagen: "img/electroreciclaje.webp",
         nombre: "ELECTRORECICLAJE",
         elementos: [
-            { tipo: "link-geo", url: "https://www.google.com/maps/d/u/1/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.1442791%2C-71.3208962&z=16", texto: "Campichuelo y Suiza" },
+            { tipo: "link-geo", url: "https://www.google.com/maps/search/?api=1&query=Campichuelo+y+Suiza+Bariloche", texto: "Campichuelo y Suiza" },
             { tipo: "texto", icono: "fa-solid fa-graduation-cap", texto: "<strong>Proyecto Educativo:</strong> Estudiantes de electrónica reutilizan componentes para reparación y aprendizaje." },
             { tipo: "texto", icono: "fa-solid fa-heart-pulse", texto: "Reciben equipos tanto <strong>rotos como en funcionamiento</strong>." },
             { tipo: "whatsapp", numero: "2944594891" }
@@ -476,7 +476,7 @@ const listaOrganizaciones = [
         nombre: "ESQUINA ÑIRECO",
         elementos: [
             { tipo: "texto", icono: "fa-solid fa-boxes-packing", texto: "Recepción de materiales recuperables, metales y RAEE" },
-            { tipo: "link-geo", url: "https://www.google.com/maps/d/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.144027699999995%2C-71.2817501&z=16", texto: "Namuncura 1997" },
+            { tipo: "link-geo", url: "https://www.google.com/maps/search/?api=1&query=Namuncura+1997+Bariloche", texto: "Namuncura 1997" },
             { tipo: "texto", icono: "fa-regular fa-clock", texto: "Lun-Sáb 10-21 hs. / Dom y Fer 11-21 hs." },
             { tipo: "whatsapp", numero: "2944663243" }
         ]
@@ -490,7 +490,7 @@ const listaOrganizaciones = [
         nombre: "METALES SUR RECICLADOS",
         elementos: [
             { tipo: "texto", icono: "fa-solid fa-recycle", texto: "Compra y reciclado de metales no ferrosos y baterías" },
-            { tipo: "link-geo", url: "https://www.google.com/maps/d/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.15461329999997%2C-71.29993379999999&z=16", texto: "Sobral J. M. 946" },
+            { tipo: "link-geo", url: "https://www.google.com/maps/search/?api=1&query=Sobral+J+M+946+Bariloche", texto: "Sobral J. M. 946" },
             { tipo: "texto", icono: "fa-regular fa-clock", texto: "Lun-Vie 9-13 hs y 15:30-19 hs / Sáb 9-14 hs / Dom Cerrado" },
             { tipo: "whatsapp", numero: "2944419422" },
             { tipo: "instagram", usuario: "recicladosmetalsur" },

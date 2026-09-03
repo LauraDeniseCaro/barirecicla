@@ -20,7 +20,7 @@
 /* =========================================================================
    ANIMACIONES GLOBALES (KEYFRAMES)
    ========================================================================= */
-/* 1. Definición del haz de luz */
+/* 1. Definición del haz de luz para el Cafecito */
 @keyframes cafecitoBrillo {
     0% {
         left: -100%;
@@ -121,7 +121,7 @@ body {
     color: #666;
 }
 
-/* 2. Botón estático con destello interno */
+/* Botón estático con destello interno (Efecto Shine) */
 .btn-cafecito-header {
     background: var(--verde-medio);
     color: var(--blanco);
@@ -212,7 +212,6 @@ body {
 /* =========================================================================
    4. SECCIÓN INFO-ACCENT Y CAJA INTRO DUDAS
    ========================================================================= */
-
 /* Estilos de tarjeta unificados para intro-box e info-accent-box */
 .intro-box,
 .info-accent-box {
@@ -266,7 +265,7 @@ body {
 }
 
 /* =========================================================================
-   5. BUSCADOR Y BOTONES DE FILTRO PREMIUM
+   5. BUSCADOR Y BOTONES DE FILTRO PREMIUM (Actualizado con Sticky)
    ========================================================================= */
 .search-filter-container {
     margin-bottom: 35px;
@@ -303,17 +302,18 @@ body {
     flex-wrap: wrap;
 }
 
+/* Botones de Filtro más amplios (Touch Targets) */
 .btn-filter {
     background: rgba(255, 255, 255, 0.5);
     color: #4a5568;
     border: 1px solid rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    padding: 10px 24px;
+    padding: 14px 26px; /* Aumentamos de 10px a 14px arriba y abajo */
     border-radius: 50px;
     cursor: pointer;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.95rem; /* Un pelín más grande la letra */
     font-family: var(--fuente-moderna);
     box-shadow: var(--shadow-sm);
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -887,13 +887,15 @@ body {
     margin: 0 0 25px 0;
 }
 
+/* Botón Cafecito del Footer más amplio (Touch Targets) */
 .btn-cafecito {
     background: #ff813f;
     color: var(--blanco);
-    padding: 14px 30px;
+    padding: 16px 32px; /* Aumentamos de 14px a 16px arriba y abajo */
     border-radius: 50px;
     text-decoration: none;
     font-weight: 700;
+    font-size: 1rem;
     display: inline-block;
     box-shadow: 0 6px 20px rgba(255, 129, 63, 0.3);
     transition: all 0.2s ease;
@@ -984,7 +986,7 @@ body {
 }
 
 /* =========================================================================
-   10. AJUSTES RESPONSIVOS GENERALES
+   10. AJUSTES RESPONSIVOS GENERALES (Con Simplificación Visual para Celulares)
    ========================================================================= */
 @media (max-width: 600px) {
     body {
@@ -1022,6 +1024,36 @@ body {
 
     .map-container iframe {
         height: 320px;
+    }
+    
+    /* Simplificamos la caja Intro */
+    .intro-box {
+        padding: 15px 18px; /* Menos espacio adentro */
+        gap: 10px; /* Menos espacio entre preguntas */
+        margin-bottom: 15px; /* Menos espacio abajo */
+    }
+
+    .intro-item p {
+        font-size: 0.9rem; /* Letra un poquito más chica */
+    }
+
+    .intro-icon {
+        font-size: 1.1rem;
+    }
+
+    /* Reducimos el tamaño de la caja de novedades */
+    .suscripcion-fija-box {
+        padding: 12px 15px;
+        margin-bottom: 15px;
+    }
+
+    .suscripcion-fija-box p {
+        font-size: 0.85rem;
+    }
+
+    .novedades-section-title {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
     }
 }
 
