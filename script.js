@@ -92,44 +92,44 @@ function descartarNovedad(boton) {
 
 // Generador del HTML de cada tarjeta de novedad (Diseño de 2 columnas y contactos)
 function crearTarjetaNovedad(item) {
-  // 1. WhatsApp / Teléfono
-  let telefonoHtml = '';
-  if (item.telefono) {
-    const numLimpio = item.telefono.toString().replace(/[^0-9]/g, '');
-    telefonoHtml = `
+    // 1. WhatsApp / Teléfono
+    let telefonoHtml = '';
+    if (item.telefono) {
+        const numLimpio = item.telefono.toString().replace(/[^0-9]/g, '');
+        telefonoHtml = `
       <a href="https://wa.me/${numLimpio}" target="_blank" rel="noopener" class="contacto-item whatsapp-link">
         <i class="fab fa-whatsapp"></i> ${item.telefono}
       </a>`;
-  }
+    }
 
-  // 2. Instagram
-  let instagramHtml = '';
-  if (item.instagram) {
-    const instaUser = item.instagram
-      .replace('https://www.instagram.com/', '')
-      .replace('https://instagram.com/', '')
-      .replace('@', '')
-      .replace(/\/$/, '')
-      .trim();
-    instagramHtml = `
+    // 2. Instagram
+    let instagramHtml = '';
+    if (item.instagram) {
+        const instaUser = item.instagram
+            .replace('https://www.instagram.com/', '')
+            .replace('https://instagram.com/', '')
+            .replace('@', '')
+            .replace(/\/$/, '')
+            .trim();
+        instagramHtml = `
       <a href="https://www.instagram.com/${instaUser}" target="_blank" rel="noopener" class="contacto-item instagram-link">
         <i class="fab fa-instagram"></i> @${instaUser}
       </a>`;
-  }
+    }
 
-  // 3. Dirección opcional (Google Maps)
-  let direccionHtml = '';
-  if (item.direccion) {
-    const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.direccion)}`;
-    direccionHtml = `
+    // 3. Dirección opcional (Google Maps)
+    let direccionHtml = '';
+    if (item.direccion) {
+        const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.direccion)}`;
+        direccionHtml = `
       <a href="${mapsUrl}" target="_blank" rel="noopener" class="contacto-item direccion-link">
         <i class="fas fa-map-marker-alt"></i> ${item.direccion}
       </a>`;
-  }
+    }
 
-  // Caja de datos de contacto
-  const tieneContactos = telefonoHtml || instagramHtml || direccionHtml;
-  const contactosBlock = tieneContactos ? `
+    // Caja de datos de contacto
+    const tieneContactos = telefonoHtml || instagramHtml || direccionHtml;
+    const contactosBlock = tieneContactos ? `
     <div class="novedades-contactos-box">
       <span class="contactos-titulo">Datos de contacto</span>
       ${telefonoHtml}
@@ -137,21 +137,21 @@ function crearTarjetaNovedad(item) {
       ${direccionHtml}
     </div>` : '';
 
-  // Imagen derecha (Flyer)
-  let imagenHtml = '';
-  if (item.imagen) {
-    const imagenSana = (item.imagen.startsWith('http://') || item.imagen.startsWith('https://') || item.imagen.startsWith('./')) ? encodeURI(item.imagen) : '';
-    if (imagenSana) {
-      imagenHtml = `
+    // Imagen derecha (Flyer)
+    let imagenHtml = '';
+    if (item.imagen) {
+        const imagenSana = (item.imagen.startsWith('http://') || item.imagen.startsWith('https://') || item.imagen.startsWith('./')) ? encodeURI(item.imagen) : '';
+        if (imagenSana) {
+            imagenHtml = `
         <div class="novedades-col-img">
           <img src="${imagenSana}" alt="${item.titulo || 'Novedad'}" loading="lazy" onerror="this.parentElement.style.display='none';">
         </div>`;
+        }
     }
-  }
 
-  const colorBadgeReal = (item.colorBadge && item.colorBadge.startsWith('#')) ? item.colorBadge : 'var(--verde-medio)';
+    const colorBadgeReal = (item.colorBadge && item.colorBadge.startsWith('#')) ? item.colorBadge : 'var(--verde-medio)';
 
-  return `
+    return `
     <div class="slide-item ${imagenHtml ? 'con-imagen-flyer' : ''}">
       <!-- COLUMNA IZQUIERDA: INFORMACIÓN -->
       <div class="novedades-col-info">
@@ -465,6 +465,36 @@ const listaOrganizaciones = [
         elementos: [
             { tipo: "texto", icono: "fa-solid fa-laptop-code", texto: "Reciclaje de RAEEs y tecnología en desuso" },
             { tipo: "whatsapp", numero: "2944652004" }
+        ]
+    },
+    {
+        categoria: "especiales",
+        materiales: "Latas de aluminio, cobre, bronce, plomo, aluminio. Matafuegos, garrafas, bombonas, barriles, tanques (GNC, Oxígeno, Argón, Acetileno), tubos, cilindros, perfiles. Aceite usado de cocina y motor. Plásticos (cajones, baldes, tapitas). Residuos electrónicos. Electrodomésticos grandes y pequeños (termotanques, lavarropas, heladeras, hornos eléctricos, caloventores, estufas, aspiradoras, minipimer). Herramientas eléctricas y de mano. Cables, alambres, eslingas. Maderas, pallets, aserrín, viruta. Vidrio (botellas, frascos, ventanas, DVH). Muebles, estantes, estructuras. Cartón y papel.",
+        tags: "esquina ñireco nireco namuncura chatarra metales aluminio cobre bronce plomo latas latitas latas de aluminio matafuegos matafuego garrafas garrafa bombona bombonas barriles barril tanques gnc oxigeno argon acetileno tubos cilindros perfiles aceite usado aceite de cocina aceite de motor plasticos cajon cajones balde baldes tapitas tapas raee electronicos residuos electronicos electrodomesticos termotanques termotanque lavarropas heladeras heladera hornos electricos horno electrico caloventores estufas aspiradora aspiradoras minipimer herramientas herramientas electricas cables cable alambre alambres eslingas eslinga madera maderas pallets pallet aserrin viruta vidrio vidrios botellas frascos ventanas dvh muebles mueble estantes estructuras carton papel",
+        logo: "img/esquina-nireco-logo.webp",
+        imagen: "img/esquina-nireco.webp",
+        nombre: "ESQUINA ÑIRECO",
+        elementos: [
+            { tipo: "texto", icono: "fa-solid fa-boxes-packing", texto: "Recepción de materiales recuperables, metales y RAEE" },
+            { tipo: "link-geo", url: "https://www.google.com/maps/d/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.144027699999995%2C-71.2817501&z=16", texto: "Namuncura 1997" },
+            { tipo: "texto", icono: "fa-regular fa-clock", texto: "Lun-Sáb 10-21 hs. / Dom y Fer 11-21 hs." },
+            { tipo: "whatsapp", numero: "2944663243" }
+        ]
+    },
+    {
+        categoria: "especiales",
+        materiales: "Cobre, bronce, aluminio, plomo, batería, bocha de heladera, radiador de bronce, latitas, batería de moto.",
+        tags: "metales sur metal sur reciclados sobral chatarra cobre bronce aluminio plomo bateria baterias bateria de moto baterias de moto bateria de auto baterias de auto bocha de heladera bochas radiador radiadores radiador de bronce latas latitas latitas de cerveza latitas de gaseosa metales no ferrosos fundicion compra de metales",
+        logo: "img/logo-metalsur.webp",
+        imagen: "img/metalsur.webp",
+        nombre: "METALES SUR RECICLADOS",
+        elementos: [
+            { tipo: "texto", icono: "fa-solid fa-recycle", texto: "Compra y reciclado de metales no ferrosos y baterías" },
+            { tipo: "link-geo", url: "https://www.google.com/maps/d/viewer?hl=es&mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ll=-41.15461329999997%2C-71.29993379999999&z=16", texto: "Sobral J. M. 946" },
+            { tipo: "texto", icono: "fa-regular fa-clock", texto: "Lun-Vie 9-13 hs y 15:30-19 hs / Sáb 9-14 hs / Dom Cerrado" },
+            { tipo: "whatsapp", numero: "2944419422" },
+            { tipo: "instagram", usuario: "recicladosmetalsur" },
+            { tipo: "facebook", usuario: "recicladosmetalsur" }
         ]
     }
 ];
