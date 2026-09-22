@@ -107,6 +107,9 @@
                 <div class="header-text-wrapper">
                     <h1>Baritoxico Recicla</h1>
                     <h2>Tu guía de puntos verdes</h2>
+                    <span id="badge-app-instalada" class="badge-instalada" style="display: none;">
+                        <i class="fa-solid fa-circle-check"></i> App
+                    </span>
                 </div>
             </div>
 
@@ -116,51 +119,13 @@
             </a>
         </div>
 
-        <!-- BOX INTRO CON ONDA -->
-        <div class="border-box intro-box">
-            <div class="intro-item">
-                <i class="fa-solid fa-leaf intro-icon"></i>
-                <p>¿Querés reducir tu huella en el planeta?</p>
-            </div>
-            <div class="intro-item">
-                <i class="fa-solid fa-recycle intro-icon"></i>
-                <p>¿Separás pero no sabés dónde llevar tus reciclables?</p>
-            </div>
-            <div class="intro-item">
-                <i class="fa-solid fa-seedling intro-icon"></i>
-                <p>¿Querés empezar a compostar?</p>
-            </div>
+        <!-- RECORDATORIO SUTIL: LIMPIOS Y SECOS (1 sola línea compacta) -->
+        <div class="info-accent-box">
+            <p><i class="fa-solid fa-circle-check"></i> Recordá: todos los materiales deben estar <strong>limpios y
+                    secos</strong>.</p>
         </div>
 
-        <!-- SECCIÓN DE NOVEDADES Y SUSCRIPCIÓN PUSH -->
-        <div class="novedades-wrapper">
-            <div class="suscripcion-fija-box"
-                style="display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap;">
-                <p style="margin: 0;"><i class="fa-solid fa-bell"></i> ¿Querés recibir las novedades al instante en tu
-                    celular?</p>
-                <div style="display: flex; align-items: center; gap: 8px;">
-                    <button id="btn-onesignal-toggle" class="btn-suscripcion-toggle">
-                        <i class="fa-solid fa-bell"></i> <span id="btn-onesignal-text">Activar notificaciones</span>
-                    </button>
-                    <button onclick="this.closest('.suscripcion-fija-box').style.display='none'"
-                        style="background: none; border: none; color: #666; font-size: 1.2rem; cursor: pointer;"
-                        title="Cerrar">
-                        &times;
-                    </button>
-                </div>
-            </div>
-
-            <!-- Contenedor dinámico para las novedades in-app -->
-            <div id="contenedor-novedades"></div>
-        </div>
-
-        <!-- INFO ACCENT BOX -->
-        <div class="border-box info-accent-box">
-            <p><strong>Acá encontrarás dónde llevar tus reciclables</strong></p>
-            <p><em>Recordá: Todos los materiales deben estar limpios y secos.</em></p>
-        </div>
-
-        <!-- BUSCADOR Y FILTROS -->
+        <!-- BUSCADOR Y FILTROS (Quedan arriba para verlos en el primer scroll) -->
         <div class="search-filter-container">
             <input type="text" id="buscador" placeholder="Buscar por barrio, material u organización...">
 
@@ -178,6 +143,26 @@
                     <i class="fa-solid fa-triangle-exclamation"></i> Especiales
                 </button>
             </div>
+        </div>
+
+        <!-- SECCIÓN DE NOVEDADES Y SUSCRIPCIÓN COMPACTA -->
+        <div class="novedades-wrapper">
+            <div class="suscripcion-fija-box">
+                <div class="suscripcion-texto">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>¿Recibir alertas y novedades?</span>
+                </div>
+                <div class="suscripcion-acciones">
+                    <button id="btn-onesignal-toggle" class="btn-suscripcion-toggle">
+                        <span id="btn-onesignal-text">Activar</span>
+                    </button>
+                    <button onclick="this.closest('.suscripcion-fija-box').style.display='none'"
+                        class="btn-cerrar-notif" title="Cerrar">&times;</button>
+                </div>
+            </div>
+
+            <!-- Contenedor dinámico de novedades (Google Sheets) -->
+            <div id="contenedor-novedades"></div>
         </div>
 
         <!-- REJILLA DE TARJETAS DINÁMICAS -->

@@ -6,6 +6,7 @@ const ASSETS = [
   './styles.css',
   './script.js',
   './manifest.json',
+  './docs/guia-compost-baritoxico.pdf',
   './img/baritoxico-logo.webp',
   './img/favicon-baritoxico.webp',
   './img/arb.webp',

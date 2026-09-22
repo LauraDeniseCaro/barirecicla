@@ -320,8 +320,8 @@ function actualizarIndicadoresVisuales(index) {
 const listaOrganizaciones = [
     {
         categoria: "reciclaje",
-        materiales: "Plásticos (film, botellas PET, tapitas, baldes, cajones), metales (latas de gaseosas, cervezas y conserva, cobre, bronce, aluminio), envases de tetra pack, papel (hojas, libros) y cartón.",
-        tags: "arb vertedero recicladores carton papel hojas libros libro baldes de plastico balde de plastico cajones de plastico cajon de plastico botellas pet botella pet tapitas plasticas tapas de botella tapita de botella metales cobre bronce aluminio latas de gaseosa lata de gaseosa latas de cerveza lata de cerveza nylon strech film packs de gaseosa latas de conserva lata de conserva tetra pack tetrapack caja de leche cajas de leche",
+        materiales: "Plásticos (film, botellas PET, tapitas, baldes, cajones), metales (latas de gaseosas, cervezas, cobre, bronce, aluminio), papel (hojas, libros) y cartón.",
+        tags: "arb vertedero recicladores carton papel hojas libros libro baldes de plastico balde de plastico cajones de plastico cajon de plastico botellas pet botella pet tapitas plasticas tapas de botella tapita de botella metales cobre bronce aluminio latas de gaseosa lata de gaseosa latas de cerveza lata de cerveza nylon strech film packs de gaseosa",
         logo: "img/logo-arb.webp",
         imagen: "img/arb.webp",
         nombre: "ARB - RECICLADORES",
@@ -349,7 +349,7 @@ const listaOrganizaciones = [
     {
         categoria: "reciclaje",
         materiales: "Plásticos (botellas PET, tapitas, envases de shampoo o acondicionador, bidones, botellas de lavandina) y latas de cerveza y gaseosa.",
-        tags: "jovenes pioneros conicet frutillar pet botella pet botellas pets envase de shampoo envases de shampoo envases de acondicionador envase de acondicionador shampoo acondicionador bolsa de snacks bolsas de snacks envoltorios envoltorio envoltorios de snacks envoltorio de snacks envoltorios fideos envoltorio de fideos bolsa bolsas bolsa de plastico film potes de plastico pote de plastico bandeja de plastico bandejas de plastico tuppers tupper telgopor bandeja de telgopor pote de telgopor cds dvds cd dvd paquetes de cafe paquete de cafe tuppers snacks bidon bidones lavandina",
+        tags: "jovenes pioneros conicet frutillar pet botella pet shampoo acondicionador latas de cerveza latas de gaseosa club andino victorias 106 viviendas mirador cartel centro civico",
         logo: "img/logo-jxb.webp",
         imagen: "img/jovenesporbariloche.webp",
         nombre: "JÓVENES POR BARILOCHE",
@@ -361,13 +361,17 @@ const listaOrganizaciones = [
                 tipo: "desplegable-ecopuntos",
                 titulo: "Ver más Ecopuntos",
                 sedes: [
+                    { nombre: "Club Andino Bariloche (20 de Febrero 30)", horario: "Todos los días", url: "https://www.google.com/maps/place/Club+Andino+Bariloche/@-41.1353602,-71.3128706,17z/data=!3m1!4b1!4m6!3m5!1s0x961a7b72a7da94c3:0xd9e9283572d5e1f5!8m2!3d-41.1353602!4d-71.3102957" },
+                    { nombre: "Junta Vecinal Las Victorias (Av. Las Victorias 651)", horario: "Todos los días", url: "https://www.google.com/maps/place/Av.+Las+Victorias+651,+R8400+San+Carlos+de+Bariloche,+R%C3%ADo+Negro/@-41.1346862,-71.2610285,19z" },
+                    { nombre: "106 Viviendas (Puerto Argentino y Rawson)", horario: "Punto exterior 24hs", url: "https://www.google.com/maps/place/Puerto+Argentino+y+Rawson/@-41.168145,-71.3112749,17z" },
+                    { nombre: "Mirador Lago Nahuel Huapi (Cartel Bariloche)", horario: "Punto exterior 24hs", url: "https://www.google.com/maps/place/Mirador+Lago+Nahuel+Huapi/@-41.1322307,-71.3136724,17z" },
                     { nombre: "Pioneros 2350 (CONICET)", horario: "Lun-Vie 9-17hs", url: "https://www.google.com/maps/search/?api=1&query=Avenida+de+los+Pioneros+2350+Bariloche" },
                     { nombre: "Junta Vecinal Altos del Cóndor", horario: "Jueves 19 a 20hs", url: "https://www.google.com/maps/search/?api=1&query=Junta+Vecinal+Altos+del+Condor+Bariloche" },
                     { nombre: "Junta Vecinal Melipal", horario: "Todos los días hasta las 20:00hs", url: "https://www.google.com/maps/search/?api=1&query=Junta+Vecinal+Melipal+Bariloche" },
                     { nombre: "Club Pehuenes (Exclusivo Socios)", horario: "Horarios del club", url: "https://www.google.com/maps/search/?api=1&query=Club+Los+Pehuenes+Bariloche" },
                     { nombre: "Junta Vecinal Pinar del Lago", horario: "Lun-Vie 9-17hs", url: "https://www.google.com/maps/search/?api=1&query=Junta+Vecinal+Pinar+del+Lago+Bariloche" },
                     { nombre: "Centro del Copiado", horario: "Lun-Vie 9-17hs", url: "https://www.google.com/maps/search/?api=1&query=Centro+del+Copiado+Bariloche" },
-                    { nombre: "Centro Civico", horario: "Lun-Vie 9-17hs", url: "https://www.google.com/maps/search/?api=1&query=Centro+Civico+Bariloche" },
+                    { nombre: "Centro Cívico", horario: "Lun-Vie 9-17hs", url: "https://www.google.com/maps/search/?api=1&query=Centro+Civico+Bariloche" },
                     { nombre: "Junta Vecinal Barrio Unión", horario: "Lun-Vie 9-17hs", url: "https://www.google.com/maps/search/?api=1&query=Pecho+Colorado+711,+San+Carlos+de+Bariloche" },
                     { nombre: "Barrio Valle Azul", horario: "Lun-Vie 9-17hs", url: "https://www.google.com/maps/search/?api=1&query=Cascada+de+los+Cesares+816,+San+Carlos+de+Bariloche" }
                 ]
@@ -457,13 +461,14 @@ const listaOrganizaciones = [
     },
     {
         categoria: "especiales",
-        materiales: "Celulares, TV LED, cables, auriculares, pavas eléctricas, consolas, aparatos de gym, instrumentos musicales, equipos de audio, notebooks, pilas, telescopios, minicomponentes, mouse, pendrives, proyectores, cámaras, máquinas de coser, herramientas, parlantes y tablets.",
-        tags: "electronicos raee cables cable computadoras computadora pc pcs cpu celus celulares celular notebooks notebook tablet tablets auriculares auricular mouse mouses pendrive prendrives prendrivers parlante parlantes equipos de audio equipo de audio proyector camara camaras consola consolas telescopio telescopios pava electrica maquina de coser herramientas aparatos electonicos aparato electronico aparatos de gym aparato de gym dispositivos de comunicación smartwatch smarphone tv led pilas instrumentos musicales minicomponentes mousse",
+        materiales: "Celulares, TV LED, cables, auriculares, pavas eléctricas, consolas, aparatos de gym, instrumentos musicales, equipos de audio, notebooks, telescopios, minicomponentes, mouse, pendrives, proyectores, cámaras, máquinas de coser, herramientas, parlantes, tablets y latas de pintura de todo tipo (nuevas, usadas o con restos secos).",
+        tags: "electronicos raee cables cable computadoras computadora pc pcs cpu celus celulares celular notebooks notebook tablet tablets auriculares auricular mouse mouses pendrive parlantes equipos de audio consola pava electrica herramientas pintura pinturas latas de pintura lata de pintura barniz sintetico pintura al agua",
         logo: "img/logo-electronicos.webp",
         imagen: "img/residuoselectronicos.webp",
         nombre: "RESIDUOS ELECTRÓNICOS",
         elementos: [
             { tipo: "texto", icono: "fa-solid fa-laptop-code", texto: "Reciclaje de RAEEs y tecnología en desuso" },
+            { tipo: "texto", icono: "fa-solid fa-paint-roller", texto: "Reciben latas de pintura (al agua o sintéticas, secas o usadas)" },
             { tipo: "whatsapp", numero: "2944652004" }
         ]
     },
@@ -495,6 +500,25 @@ const listaOrganizaciones = [
             { tipo: "whatsapp", numero: "2944419422" },
             { tipo: "instagram", usuario: "recicladosmetalsur" },
             { tipo: "facebook", usuario: "recicladosmetalsur" }
+        ]
+    },
+    {
+        categoria: "compostaje",
+        labelMateriales: "Contenido de la guía:",
+        iconoMateriales: "fa-solid fa-book-open",
+        materiales: "Aprende el paso a paso: qué residuos orgánicos sumar, qué evitar, equilibrio verde/seco, control de humedad y cosecha del abono.",
+        tags: "guia compostaje compost compostar tierra abono residuos organicos manual descargar pdf como compostar lombrices abono casero",
+        logo: "img/logo-guiareciclaje.webp",
+        imagen: "img/guiadecompostaje.webp", // Podés usar una foto de compost o la que prefieras
+        nombre: "GUÍA DE COMPOSTAJE EN CASA",
+        elementos: [
+            { tipo: "texto", icono: "fa-solid fa-book-open-reader", texto: "Manual práctico y gratuito en PDF para iniciar tu compostera." },
+            {
+                tipo: "html",
+                html: `<a href="./docs/guia-compost-baritoxico.pdf" target="_blank" rel="noopener" class="btn-descarga-guia">
+                        <i class="fa-solid fa-file-pdf"></i> Ver o Descargar Guía (PDF)
+                       </a>`
+            }
         ]
     }
 ];
@@ -558,7 +582,6 @@ function generarTarjetasHTML() {
             nombreBadge = '<i class="fa-solid fa-triangle-exclamation"></i> Especiales';
             iconoBanner = 'fa-solid fa-triangle-exclamation';
         }
-
         let textoMaterialesHTML = `<p>${org.materiales}</p>`;
         if (org.materiales.length > 160) {
             const textoCorto = org.materiales.substring(0, 150) + "...";
@@ -570,6 +593,10 @@ function generarTarjetasHTML() {
                 </p>
             `;
         }
+
+        // Si la tarjeta define un título e ícono propio los usa, sino usa "Reciben:" por defecto
+        const labelMateriales = org.labelMateriales || "Reciben:";
+        const iconoMateriales = org.iconoMateriales || "fa-solid fa-boxes-stacked";
 
         return `
             <div class="card" data-categoria="${org.categoria}" data-tags="${org.tags}">
@@ -586,7 +613,7 @@ function generarTarjetasHTML() {
                 </div>
                 <div class="card-body">
                     <div class="card-materials">
-                        <span class="materials-label"><i class="fa-solid fa-boxes-stacked"></i> Reciben:</span>
+                        <span class="materials-label"><i class="${iconoMateriales}"></i> ${labelMateriales}</span>
                         ${textoMaterialesHTML}
                     </div>
                     ${elementosHTML}
@@ -672,6 +699,13 @@ document.addEventListener("DOMContentLoaded", function () {
     generarTarjetasHTML();
     tarjetas = document.querySelectorAll('.card');
 
+    // DETECTAR SI LA APP ESTÁ INSTALADA Y ACTIVAR EL BADGE
+    const esModoApp = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+    if (esModoApp) {
+        const badgeInstalada = document.getElementById('badge-app-instalada');
+        if (badgeInstalada) badgeInstalada.style.display = 'inline-flex';
+    }
+
     // Event listener del buscador
     const inputBuscador = document.getElementById('buscador');
     if (inputBuscador) {
@@ -727,58 +761,88 @@ document.addEventListener("DOMContentLoaded", function () {
     function actualizarEstadoBoton(isSubscribed) {
         if (!btnToggle) return;
         if (isSubscribed) {
-            btnToggle.textContent = "Desactivar Notificaciones";
+            btnToggle.textContent = "Desactivar";
             btnToggle.classList.add("activo");
         } else {
-            btnToggle.textContent = "Activar Notificaciones";
+            btnToggle.textContent = "Activar";
             btnToggle.classList.remove("activo");
         }
     }
 
-    // Configuración del Banner de Instalación PWA
+    // =========================================================================
+    // GESTIÓN INTELIGENTE DE INSTALACIÓN PWA (Android / PC vs. iPhone iOS)
+    // =========================================================================
     const banner = document.getElementById('banner-instalar');
     const btnInstalar = document.getElementById('btn-instalar-accion');
     const btnCerrar = document.getElementById('btn-cerrar-banner');
-    const textoInstrucciones = document.getElementById('instrucciones-instalacion');
 
-    if (banner && btnInstalar && btnCerrar) {
+    if (banner) {
         const ocultarBannerPermanente = localStorage.getItem('ocultarBannerRecicla') === 'true';
-        const esModoApp = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
 
+        // Solo muestra el banner si NO está instalada y NO fue cerrado previamente
         if (!esModoApp && !ocultarBannerPermanente) {
+            // Detección robusta de iOS (iPhone, iPad, iPod)
             const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            const esIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
-
-            window.addEventListener('beforeinstallprompt', (e) => {
-                e.preventDefault();
-                deferredPrompt = e;
-                banner.style.display = 'block';
-            });
+            const esIOS = (/iPad|iPhone|iPod/.test(userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) && !window.MSStream;
 
             if (esIOS) {
+                // Configuración visual adaptada a Safari / iPhone
+                banner.classList.add('banner-ios');
+                banner.innerHTML = `
+                    <div class="install-content-ios">
+                        <div class="install-header-ios">
+                            <span class="install-badge-ios"><i class="fa-brands fa-apple"></i> Instalar en iPhone</span>
+                            <button id="btn-cerrar-ios" class="btn-cerrar-x" title="Cerrar">&times;</button>
+                        </div>
+                        <p class="install-titulo-ios">¡Tené la guía a mano como una app!</p>
+                        <div class="pasos-ios">
+                            <div class="paso-item">
+                                <span class="paso-numero">1</span>
+                                <p>Tocá el botón <strong>Compartir</strong> <i class="fa-solid fa-arrow-up-from-bracket icono-safari"></i> abajo en Safari.</p>
+                            </div>
+                            <div class="paso-item">
+                                <span class="paso-numero">2</span>
+                                <p>Buscá y elegí <strong>"Agregar a pantalla de inicio"</strong> <i class="fa-regular fa-square-plus"></i>.</p>
+                            </div>
+                        </div>
+                        <button id="btn-entendido-ios" class="btn-entendido-ios">¡Entendido!</button>
+                    </div>
+                `;
                 banner.style.display = 'block';
-            }
 
-            btnInstalar.addEventListener('click', async () => {
-                if (deferredPrompt) {
-                    deferredPrompt.prompt();
-                    const { outcome } = await deferredPrompt.userChoice;
-                    if (outcome === 'accepted') banner.style.display = 'none';
-                    deferredPrompt = null;
-                } else if (esIOS && textoInstrucciones) {
-                    textoInstrucciones.innerHTML = 'Tocá el botón <strong>Compartir</strong> <i class="fa-solid fa-share-from-square"></i> y elegí <strong>"Agregar a inicio"</strong>.';
-                    btnInstalar.style.display = 'none';
+                const cerrarIos = () => {
+                    banner.style.display = 'none';
+                    localStorage.setItem('ocultarBannerRecicla', 'true');
+                };
+                document.getElementById('btn-cerrar-ios')?.addEventListener('click', cerrarIos);
+                document.getElementById('btn-entendido-ios')?.addEventListener('click', cerrarIos);
+
+            } else {
+                // Flujo estándar para Android y navegadores de escritorio
+                window.addEventListener('beforeinstallprompt', (e) => {
+                    e.preventDefault();
+                    deferredPrompt = e;
+                    banner.style.display = 'block';
+                });
+
+                if (btnInstalar) {
+                    btnInstalar.addEventListener('click', async () => {
+                        if (deferredPrompt) {
+                            deferredPrompt.prompt();
+                            const { outcome } = await deferredPrompt.userChoice;
+                            if (outcome === 'accepted') banner.style.display = 'none';
+                            deferredPrompt = null;
+                        }
+                    });
                 }
-            });
 
-            btnCerrar.addEventListener('click', function () {
-                banner.style.display = 'none';
-                localStorage.setItem('ocultarBannerRecicla', 'true');
-            });
+                if (btnCerrar) {
+                    btnCerrar.addEventListener('click', function () {
+                        banner.style.display = 'none';
+                        localStorage.setItem('ocultarBannerRecicla', 'true');
+                    });
+                }
+            }
         }
     }
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    verificarYMostrarNovedades();
 });
