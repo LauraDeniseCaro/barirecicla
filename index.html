@@ -108,7 +108,7 @@
                     <h1>Baritoxico Recicla</h1>
                     <h2>Tu guía de puntos verdes</h2>
                     <span id="badge-app-instalada" class="badge-instalada" style="display: none;">
-                        <i class="fa-solid fa-circle-check"></i> App
+                        <i class="fa-solid fa-circle-check"></i> App Instalada
                     </span>
                 </div>
             </div>
@@ -117,6 +117,20 @@
                 title="Invitanos un Cafecito">
                 ☕ <span>Cafecito</span>
             </a>
+        </div>
+
+        <!-- BARRA FIJA DISCRETA DE INSTALACIÓN PWA -->
+        <div id="banner-instalar" class="install-bar-fixed" style="display: none;">
+            <div class="install-bar-content">
+                <div class="install-bar-info">
+                    <i class="fa-solid fa-mobile-screen-button install-bar-icon"></i>
+                    <span><strong>Instalá la App</strong> para usarla más rápido</span>
+                </div>
+                <div class="install-bar-actions">
+                    <button id="btn-instalar-accion" class="btn-instalar-pills">Instalar</button>
+                    <button id="btn-cerrar-banner" class="btn-cerrar-banner-bar" title="Cerrar">&times;</button>
+                </div>
+            </div>
         </div>
 
         <!-- RECORDATORIO SUTIL: LIMPIOS Y SECOS (1 sola línea compacta) -->
@@ -221,20 +235,6 @@
             <p class="footer-copy">San Carlos de Bariloche - 2026</p>
         </div>
 
-    </div>
-
-    <!-- BANNER FLOTANTE DE INSTALACIÓN PWA -->
-    <div id="banner-instalar" class="install-banner">
-        <div class="install-content">
-            <div class="install-text">
-                <h4>¡Llevá la guía en tu celu! 📲</h4>
-                <p id="instrucciones-instalacion">Instalá la app para usarla más rápido y sin internet.</p>
-            </div>
-            <div class="install-actions">
-                <button id="btn-instalar-accion" class="btn-instalar-main">Instalar</button>
-                <button id="btn-cerrar-banner" class="btn-cerrar-x">×</button>
-            </div>
-        </div>
     </div>
 
     <!-- Script principal de la aplicación -->

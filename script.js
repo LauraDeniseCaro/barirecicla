@@ -433,6 +433,25 @@ const listaOrganizaciones = [
         ]
     },
     {
+        categoria: "compostaje",
+        labelMateriales: "Contenido de la guía:",
+        iconoMateriales: "fa-solid fa-book-open",
+        materiales: "Aprende el paso a paso: qué residuos orgánicos sumar, qué evitar, equilibrio verde/seco, control de humedad y cosecha del abono.",
+        tags: "guia compostaje compost compostar tierra abono residuos organicos manual descargar pdf como compostar lombrices abono casero",
+        logo: "img/logo-guiareciclaje.webp",
+        imagen: "img/guiadecompostaje.webp", // Podés usar una foto de compost o la que prefieras
+        nombre: "GUÍA DE COMPOSTAJE EN CASA",
+        elementos: [
+            { tipo: "texto", icono: "fa-solid fa-book-open-reader", texto: "Manual práctico y gratuito en PDF para iniciar tu compostera." },
+            {
+                tipo: "html",
+                html: `<a href="./docs/guia-compost-baritoxico.pdf" target="_blank" rel="noopener" class="btn-descarga-guia">
+                        <i class="fa-solid fa-file-pdf"></i> Ver o Descargar Guía (PDF)
+                       </a>`
+            }
+        ]
+    },
+    {
         categoria: "especiales",
         materiales: "Línea blanca (heladeras, freezers, lavarropas, secarropas), pantallas y monitores LED, microondas, hornos eléctricos, máquinas a nafta (motosierras, cortadoras), soldadoras, ventiladores y caloventores.",
         tags: "electroreciclaje campichuelo suiza estudiantes electronica reutilizan componentes proyectos educativos reparacion aprendizaje rotas funcionamiento electrodomesticos grandes heladeras freezers lavarropas secarropas microondas hornos electricos tv led monitores pantallas maquinas nafteras motosierras motoguadañas cortadoras de cesped maquinas electricas soldadoras ventiladores calefactores raee chatarra metales especiales blanca linea blanca caloventores",
@@ -503,21 +522,49 @@ const listaOrganizaciones = [
         ]
     },
     {
-        categoria: "compostaje",
-        labelMateriales: "Contenido de la guía:",
-        iconoMateriales: "fa-solid fa-book-open",
-        materiales: "Aprende el paso a paso: qué residuos orgánicos sumar, qué evitar, equilibrio verde/seco, control de humedad y cosecha del abono.",
-        tags: "guia compostaje compost compostar tierra abono residuos organicos manual descargar pdf como compostar lombrices abono casero",
-        logo: "img/logo-guiareciclaje.webp",
-        imagen: "img/guiadecompostaje.webp", // Podés usar una foto de compost o la que prefieras
-        nombre: "GUÍA DE COMPOSTAJE EN CASA",
+        categoria: "especiales",
+        labelMateriales: "Situación actual:",
+        iconoMateriales: "fa-solid fa-triangle-exclamation",
+        materiales: "Sin recepción continua en Bariloche. Aprendé a encapsularlas en casa de forma segura hasta próximas campañas.",
+        tags: "pilas bateria baterias descarte encapsulado residuo peligroso litio alcalinas aa aaa boton como desechar pilas recargables",
+        logo: "img/pilas-logo.webp",
+        imagen: "img/pilasbanner.webp",
+        nombre: "GUÍA: ¿CÓMO DESCARTAR PILAS?",
         elementos: [
-            { tipo: "texto", icono: "fa-solid fa-book-open-reader", texto: "Manual práctico y gratuito en PDF para iniciar tu compostera." },
             {
                 tipo: "html",
-                html: `<a href="./docs/guia-compost-baritoxico.pdf" target="_blank" rel="noopener" class="btn-descarga-guia">
-                        <i class="fa-solid fa-file-pdf"></i> Ver o Descargar Guía (PDF)
-                       </a>`
+                html: `
+                    <div class="contenedor-ecopuntos">
+                        <button class="btn-desplegar-jxb btn-desplegar-pilas" onclick="toggleEcopuntos(this)">
+                            <span><i class="fa-solid fa-shield-halved"></i> Ver guía de encapsulado seguro</span>
+                            <i class="fa-solid fa-angle-down btn-icono-flecha"></i>
+                        </button>
+                        <div class="lista-sedes-jxb guia-pilas-desplegada" style="display: none;">
+                            <div class="guia-pilas-pasos">
+                                <div class="paso-pila-item">
+                                    <span class="paso-pila-num">1</span>
+                                    <p><strong>Aislá los polos:</strong> Pegá cinta adhesiva o aisladora en los extremos (+ y -) de cada pila para evitar chispas.</p>
+                                </div>
+                                <div class="paso-pila-item">
+                                    <span class="paso-pila-num">2</span>
+                                    <p><strong>Botella PET:</strong> Usá una botella plástica gruesa, limpia y totalmente seca.</p>
+                                </div>
+                                <div class="paso-pila-item">
+                                    <span class="paso-pila-num">3</span>
+                                    <p><strong>Secante:</strong> Llená los huecos con arena seca, aserrín o ceniza para absorber derrames.</p>
+                                </div>
+                                <div class="paso-pila-item">
+                                    <span class="paso-pila-num">4</span>
+                                    <p><strong>Sellado hermético:</strong> Cerrá la tapa y asegurala con cinta. Guardala en un lugar seco fuera del alcance de niños.</p>
+                                </div>
+                            </div>
+                            <div class="pilas-consejo-box">
+                                <p><i class="fa-solid fa-triangle-exclamation"></i> <strong>Importante:</strong> Guardá el envase hasta que haya campañas de recolección de residuos peligrosos.</p>
+                                <p><i class="fa-solid fa-bolt"></i> <strong>Recomendación:</strong> Priorizá el uso de <strong>pilas recargables</strong> para evitar generar el residuo.</p>
+                            </div>
+                        </div>
+                    </div>
+                `
             }
         ]
     }
@@ -700,10 +747,13 @@ document.addEventListener("DOMContentLoaded", function () {
     tarjetas = document.querySelectorAll('.card');
 
     // DETECTAR SI LA APP ESTÁ INSTALADA Y ACTIVAR EL BADGE
-    const esModoApp = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
-    if (esModoApp) {
-        const badgeInstalada = document.getElementById('badge-app-instalada');
-        if (badgeInstalada) badgeInstalada.style.display = 'inline-flex';
+    const esModoApp = window.matchMedia('(display-mode: standalone)').matches
+        || window.navigator.standalone === true
+        || document.referrer.includes('android-app://');
+
+    const badgeInstalada = document.getElementById('badge-app-instalada');
+    if (esModoApp && badgeInstalada) {
+        badgeInstalada.style.display = 'inline-flex';
     }
 
     // Event listener del buscador
@@ -779,31 +829,24 @@ document.addEventListener("DOMContentLoaded", function () {
     if (banner) {
         const ocultarBannerPermanente = localStorage.getItem('ocultarBannerRecicla') === 'true';
 
-        // Solo muestra el banner si NO está instalada y NO fue cerrado previamente
+        // Solo muestra la barra si NO está instalada y NO fue cerrada previamente
         if (!esModoApp && !ocultarBannerPermanente) {
-            // Detección robusta de iOS (iPhone, iPad, iPod)
             const userAgent = navigator.userAgent || navigator.vendor || window.opera;
             const esIOS = (/iPad|iPhone|iPod/.test(userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) && !window.MSStream;
 
             if (esIOS) {
-                // Configuración visual adaptada a Safari / iPhone
+                // Adaptado para iPhone / Safari en barra fija
                 banner.classList.add('banner-ios');
                 banner.innerHTML = `
                     <div class="install-content-ios">
                         <div class="install-header-ios">
                             <span class="install-badge-ios"><i class="fa-brands fa-apple"></i> Instalar en iPhone</span>
-                            <button id="btn-cerrar-ios" class="btn-cerrar-x" title="Cerrar">&times;</button>
+                            <button id="btn-cerrar-ios" class="btn-cerrar-banner-bar" title="Cerrar">&times;</button>
                         </div>
-                        <p class="install-titulo-ios">¡Tené la guía a mano como una app!</p>
+                        <p class="install-titulo-ios">¡Tené la guía siempre a mano como una app!</p>
                         <div class="pasos-ios">
-                            <div class="paso-item">
-                                <span class="paso-numero">1</span>
-                                <p>Tocá el botón <strong>Compartir</strong> <i class="fa-solid fa-arrow-up-from-bracket icono-safari"></i> abajo en Safari.</p>
-                            </div>
-                            <div class="paso-item">
-                                <span class="paso-numero">2</span>
-                                <p>Buscá y elegí <strong>"Agregar a pantalla de inicio"</strong> <i class="fa-regular fa-square-plus"></i>.</p>
-                            </div>
+                            <p>1. Tocá <strong>Compartir</strong> <i class="fa-solid fa-arrow-up-from-bracket"></i> abajo en Safari.</p>
+                            <p>2. Elegí <strong>"Agregar a pantalla de inicio"</strong> <i class="fa-regular fa-square-plus"></i>.</p>
                         </div>
                         <button id="btn-entendido-ios" class="btn-entendido-ios">¡Entendido!</button>
                     </div>
@@ -818,7 +861,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById('btn-entendido-ios')?.addEventListener('click', cerrarIos);
 
             } else {
-                // Flujo estándar para Android y navegadores de escritorio
+                // Android y navegadores de escritorio (Chrome, Edge, etc.)
                 window.addEventListener('beforeinstallprompt', (e) => {
                     e.preventDefault();
                     deferredPrompt = e;

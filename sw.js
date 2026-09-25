@@ -1,5 +1,8 @@
 importScripts('https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js');
-const CACHE_NAME = 'baritoxico-cache-v5';
+
+// Incrementamos a v6 para invalidar la caché vieja y forzar los nuevos cambios
+const CACHE_NAME = 'baritoxico-cache-v6';
+
 const ASSETS = [
   './',
   './index.html',
@@ -17,7 +20,12 @@ const ASSETS = [
   './img/comunidadcompost.webp',
   './img/electroreciclaje.webp',
   './img/aceiteusado.webp',
-  './img/residuoselectronicos.webp'
+  './img/residuoselectronicos.webp',
+  // Reemplazá estas dos líneas con el nombre real de tus imágenes de pilas:
+  './img/pilasbanner.webp',
+  './img/pilas-logo.webp',
+  './img/guiadecompostaje.webp',
+  './img/logo-guiareciclaje.webp'
 ];
 
 // Instalación: Almacenar los recursos estáticos iniciales en caché
@@ -46,7 +54,7 @@ self.addEventListener('activate', (e) => {
   self.clients.claim();
 });
 
-// Estrategia Avanzada: Stale-While-Revalidate
+// Estrategia: Stale-While-Revalidate
 self.addEventListener('fetch', (e) => {
   if (e.request.method !== 'GET') return;
 
