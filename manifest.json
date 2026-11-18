@@ -1,6 +1,6 @@
 {
-  "short_name": "Baritoxico",
-  "name": "Baritoxico Recicla - Guía Completa",
+  "short_name": "BariRecicla",
+  "name": "BariRecicla - Guía Completa",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#e8f5e9",

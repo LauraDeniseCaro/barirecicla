@@ -1,7 +1,7 @@
 importScripts('https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js');
 
-// Incrementamos a v6 para invalidar la caché vieja y forzar los nuevos cambios
-const CACHE_NAME = 'baritoxico-cache-v6';
+// Nuevo nombre de caché para invalidar la versión anterior y aplicar el rebranding
+const CACHE_NAME = 'barirecicla-cache-v1';
 
 const ASSETS = [
   './',
@@ -21,7 +21,6 @@ const ASSETS = [
   './img/electroreciclaje.webp',
   './img/aceiteusado.webp',
   './img/residuoselectronicos.webp',
-  // Reemplazá estas dos líneas con el nombre real de tus imágenes de pilas:
   './img/pilasbanner.webp',
   './img/pilas-logo.webp',
   './img/guiadecompostaje.webp',
@@ -61,7 +60,6 @@ self.addEventListener('fetch', (e) => {
   e.respondWith(
     caches.match(e.request).then((cachedResponse) => {
       const fetchPromise = fetch(e.request).then((networkResponse) => {
-        // Guardamos solo respuestas válidas e ignoramos llamadas externas dinámicas (Google Sheets / Maps)
         if (networkResponse && networkResponse.status === 200) {
           if (!e.request.url.includes('docs.google.com') && !e.request.url.includes('google.com/maps')) {
             const responseToCache = networkResponse.clone();
