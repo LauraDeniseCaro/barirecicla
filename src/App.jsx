@@ -261,6 +261,7 @@ export default function App() {
   const [seccionActiva, setSeccionActiva] = useState('puntos');
   const [categoriaActiva, setCategoriaActiva] = useState('todas');
   const [textoBusqueda, setTextoBusqueda] = useState('');
+  const [mostrarComoFunciona, setMostrarComoFunciona] = useState(false);
 
   // Estados de instalación PWA
   const [esModoApp, setEsModoApp] = useState(false);
@@ -508,16 +509,121 @@ export default function App() {
           </div>
         </div>
 
-        <a
-          href="https://cafecito.app/baritoxico"
-          target="_blank"
-          rel="noreferrer"
-          className="btn-cafecito-header"
-          title="Invitanos un Cafecito"
-        >
-          <i className="fa-solid fa-mug-hot"></i> <span>Cafecito</span>
-        </a>
+        <div className="header-actions-group">
+          <button
+            type="button"
+            onClick={() => setMostrarComoFunciona(true)}
+            className="btn-info-header"
+            title="¿Qué podés hacer en BariRecicla?"
+            aria-label="¿Qué podés hacer en BariRecicla?"
+          >
+            <i className="fa-solid fa-circle-question"></i>
+            <span className="btn-info-label">¿Cómo funciona?</span>
+          </button>
+
+          <a
+            href="https://cafecito.app/baritoxico"
+            target="_blank"
+            rel="noreferrer"
+            className="btn-cafecito-header"
+            title="Invitanos un Cafecito"
+          >
+            <i className="fa-solid fa-mug-hot"></i> <span>Cafecito</span>
+          </a>
+        </div>
       </div>
+
+      {/* MODAL NATIVO: ¿QUÉ PODÉS HACER EN BARIRECICLA? */}
+      {mostrarComoFunciona && (
+        <div
+          className="cf-modal-overlay"
+          onClick={() => setMostrarComoFunciona(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="cf-modal-title"
+        >
+          <div className="cf-modal-card" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              className="cf-modal-close"
+              onClick={() => setMostrarComoFunciona(false)}
+              aria-label="Cerrar"
+            >
+              &times;
+            </button>
+
+            <div className="cf-modal-header">
+              <div className="cf-modal-title-row">
+                <i className="fa-solid fa-seedling cf-title-icon"></i>
+                <h2 id="cf-modal-title">¿Qué podés hacer en BariRecicla?</h2>
+              </div>
+              <p>Tu plataforma de economía circular en Bariloche</p>
+            </div>
+
+            <div className="cf-grid">
+              <div className="cf-item">
+                <div className="cf-item-icon cf-icon-green">
+                  <i className="fa-solid fa-map-location-dot"></i>
+                </div>
+                <h3>Mapa de Puntos Verdes</h3>
+                <p>
+                  Encontrá dónde llevar tus reciclables, compost y residuos especiales en toda la ciudad.
+                </p>
+              </div>
+
+              <div className="cf-item">
+                <div className="cf-item-icon cf-icon-teal">
+                  <i className="fa-solid fa-hand-holding-heart"></i>
+                </div>
+                <h3>Donaciones (Cero Basura)</h3>
+                <p>
+                  Regalá lo que ya no usás o pedí lo que necesitás, evitando que termine en la basura.
+                </p>
+              </div>
+
+              <div className="cf-item">
+                <div className="cf-item-icon cf-icon-brown">
+                  <i className="fa-solid fa-store"></i>
+                </div>
+                <h3>Emprendimientos Locales</h3>
+                <p>
+                  Descubrí comercios, proyectos y tiendas sustentables que cuidan nuestro entorno.
+                </p>
+              </div>
+
+              <div className="cf-item">
+                <div className="cf-item-icon cf-icon-cyan">
+                  <i className="fa-solid fa-book-open"></i>
+                </div>
+                <h3>Guías de Aprendizaje</h3>
+                <p>
+                  Aprendé a compostar en casa y a encapsular tus pilas de forma fácil y segura.
+                </p>
+              </div>
+
+              <div className="cf-item">
+                <div className="cf-item-icon cf-icon-dark">
+                  <i className="fa-solid fa-mobile-screen-button"></i>
+                </div>
+                <h3>Funciona Offline</h3>
+                <p>
+                  Guardá la app en tu pantalla de inicio y usá toda la información sin consumir datos.
+                </p>
+              </div>
+
+              <div className="cf-item">
+                <div className="cf-item-icon cf-icon-amber">
+                  <i className="fa-solid fa-bell"></i>
+                </div>
+                <h3>Alertas y Novedades</h3>
+                <p>
+                  Enterate al instante de campañas de recolección, eventos y noticias ambientales.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* BARRA FIJA DISCRETA DE INSTALACIÓN PWA */}
       {mostrarBannerPwa && !esModoApp && (
