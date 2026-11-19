@@ -61,8 +61,8 @@ export const listaOrganizaciones = [
     },
     {
         categoria: "reciclaje",
-        materiales: "Envases de limpiadores, detergente, jabón líquido, shampoo, acondicionadores y lavandina. Botellas de agua, gaseosas, bebidas deportivas y reutilizables. Tapitas, bolsas de súper y comercios, sachets de leche, film envoltorio y termocontraíble, envases flexibles (azúcar, pan, etc). Envoltorios de galletas, fideos, snacks y transparentes. Contenedores de alimentos/comida, cubiertos descartables, baldes, envases lácteos/descartables, bandejas, vasos térmicos, potes de helado, envases de repuestos para recarga, sorbetes, mamaderas, armazones de anteojos, tarjetas de crédito/débito, calzados, suelas, aislantes para cables y CD / DVD.",
-        tags: "buply anonima albarracin botella pet botellas pets envase de shampoo envases de shampoo envases de acondicionador envase de acondicionador shampoo acondicionador bolsa de snacks bolsas de snacks envoltorios envoltorio envoltorios de snacks envoltorio de snacks envoltorios fideos envoltorio de fideos bolsa bolsas bolsa de plastico film potes de plastico pote de plastico bandeja de plastico bandejas de plastico tuppers tupper telgopor bandeja de telgopor pote de telgopor cds dvds cd dvd paquetes de cafe paquete de cafe tuppers snacks limpiadores detergente jabon liquido lavandina agua gaseosa bebida deportiva reutilizable tapitas bolsas super comercios sachets leche flexible azucar pan contenedores alimentos comida cubiertos descartables baldes lacteos vasos termicos helado repuestos recarga sorbetes mamaderas anteojos tarjetas credito debito calzados suelas aislantes cables",
+        materiales: "Envases de limpiadores, detergente, jabón líquido, shampoo, acondicionadores y lavandina. Botellas de agua, gaseosas, bebidas deportivas y reutilizables. Tapitas, bolsas de súper y comercios, sachets de leche, film envoltorio y termocontraíble, envases flexibles (azúcar, pan, etc). Envoltorios de galletas, fideos, snacks y transparentes. Contenedores de alimentos/comida, cubiertos descartables, baldes, envases lácteos/descartables, bandejas, vasos térmicos, potes de helado, envases de repuestos para recarga, sorbetes, mamaderas, armazones de anteojos, tarjetas de crédito/débito, calzados, suelas, aislantes para cables y CD / DVD. Además, reciben aluminio (latas aplastadas y aerosoles vacíos —desodorantes, repelentes— en bolsa separada del plástico; solo aluminio, no hojalata).",
+        tags: "buply anonima albarracin botella pet botellas pets envase de shampoo envases de shampoo envases de acondicionador envase de acondicionador shampoo acondicionador bolsa de snacks bolsas de snacks envoltorios envoltorio envoltorios de snacks envoltorio de snacks envoltorios fideos envoltorio de fideos bolsa bolsas bolsa de plastico film potes de plastico pote de plastico bandeja de plastico bandejas de plastico tuppers tupper telgopor bandeja de telgopor pote de telgopor cds dvds cd dvd paquetes de cafe paquete de cafe tuppers snacks limpiadores detergente jabon liquido lavandina agua gaseosa bebida deportiva reutilizable tapitas bolsas super comercios sachets leche flexible azucar pan contenedores alimentos comida cubiertos descartables baldes lacteos vasos termicos helado repuestos recarga sorbetes mamaderas anteojos tarjetas credito debito calzados suelas aislantes cables aluminio lata latas latita latitas latas de aluminio lata de aluminio latas de cerveza latas de gaseosa aerosol aerosoles desodorante desodorantes envase de aerosol",
         logo: "/img/logo-buply.webp",
         imagen: "/img/buply.webp",
         nombre: "BUPLY (LA ANÓNIMA)",
@@ -74,8 +74,8 @@ export const listaOrganizaciones = [
     },
     {
         categoria: "reciclaje",
-        materiales: "Envases de limpiadores, detergente, jabón líquido, shampoo, acondicionadores y lavandina. Botellas de agua, gaseosas, bebidas deportivas y reutilizables. Tapitas, bolsas de súper y comercios, sachets de leche, film envoltorio y termocontraíble, envases flexibles (azúcar, pan, etc). Envoltorios de galletas, fideos, snacks y transparentes. Contenedores de alimentos/comida, cubiertos descartables, baldes, envases lácteos/descartables, bandejas, vasos térmicos, potes de helado, envases de repuestos para recarga, sorbetes, mamaderas, armazones de anteojos, tarjetas de crédito/débito, calzados, suelas, aislantes para cables y CD / DVD.",
-        tags: "buply mercado diego neil ruta 40 sur intendencia anonima albarracin botella pet botellas pets envase de shampoo envases de shampoo envases de acondicionador envase de acondicionador shampoo acondicionador bolsa de snacks bolsas de snacks envoltorios envoltorio envoltorios de snacks envoltorio de snacks envoltorios fideos envoltorio de fideos bolsa bolsas bolsa de plastico film potes de plastico pote de plastico bandeja de plastico bandejas de plastico tuppers tupper telgopor bandeja de telgopor pote de telgopor cds dvds cd dvd paquetes de cafe paquete de cafe tuppers snacks limpiadores detergente jabon liquido lavandina agua gaseosa bebida deportiva reutilizable tapitas bolsas super comercios sachets leche flexible azucar pan contenedores alimentos comida cubiertos descartables baldes lacteos vasos termicos helado repuestos recarga sorbetes mamaderas anteojos tarjetas credito debito calzados suelas aislantes cables",
+        materiales: "Envases de limpiadores, detergente, jabón líquido, shampoo, acondicionadores y lavandina. Botellas de agua, gaseosas, bebidas deportivas y reutilizables. Tapitas, bolsas de súper y comercios, sachets de leche, film envoltorio y termocontraíble, envases flexibles (azúcar, pan, etc). Envoltorios de galletas, fideos, snacks y transparentes. Contenedores de alimentos/comida, cubiertos descartables, baldes, envases lácteos/descartables, bandejas, vasos térmicos, potes de helado, envases de repuestos para recarga, sorbetes, mamaderas, armazones de anteojos, tarjetas de crédito/débito, calzados, suelas, aislantes para cables y CD / DVD. Además, reciben aluminio (latas aplastadas y aerosoles vacíos —desodorantes, repelentes— en bolsa separada del plástico; solo aluminio, no hojalata).",
+        tags: "buply mercado diego neil ruta 40 sur intendencia anonima albarracin botella pet botellas pets envase de shampoo envases de shampoo envases de acondicionador envase de acondicionador shampoo acondicionador bolsa de snacks bolsas de snacks envoltorios envoltorio envoltorios de snacks envoltorio de snacks envoltorios fideos envoltorio de fideos bolsa bolsas bolsa de plastico film potes de plastico pote de plastico bandeja de plastico bandejas de plastico tuppers tupper telgopor bandeja de telgopor pote de telgopor cds dvds cd dvd paquetes de cafe paquete de cafe tuppers snacks limpiadores detergente jabon liquido lavandina agua gaseosa bebida deportiva reutilizable tapitas bolsas super comercios sachets leche flexible azucar pan contenedores alimentos comida cubiertos descartables baldes lacteos vasos termicos helado repuestos recarga sorbetes mamaderas anteojos tarjetas credito debito calzados suelas aislantes cables aluminio lata latas latita latitas latas de aluminio lata de aluminio latas de cerveza latas de gaseosa aerosol aerosoles desodorante desodorantes envase de aerosol",
         logo: "/img/logo-mercado.webp",
         imagen: "/img/buply.webp",
         nombre: "Mercado",
@@ -115,6 +115,7 @@ export const listaOrganizaciones = [
     },
     {
         categoria: "compostaje",
+        esGuia: true,
         labelMateriales: "Contenido de la guía:",
         iconoMateriales: "fa-solid fa-book-open",
         materiales: "Aprende el paso a paso: qué residuos orgánicos sumar, qué evitar, equilibrio verde/seco, control de humedad y cosecha del abono.",
@@ -134,8 +135,8 @@ export const listaOrganizaciones = [
     },
     {
         categoria: "especiales",
-        materiales: "Línea blanca (heladeras, freezers, lavarropas, secarropas), pantallas y monitores LED, microondas, hornos eléctricos, máquinas a nafta (motosierras, cortadoras), soldadoras, ventiladores y caloventores.",
-        tags: "electroreciclaje campichuelo suiza estudiantes electronica reutilizan componentes proyectos educativos reparacion aprendizaje rotas funcionamiento electrodomesticos grandes heladeras freezers lavarropas secarropas microondas hornos electricos tv led monitores pantallas maquinas nafteras motosierras motoguadañas cortadoras de cesped maquinas electricas soldadoras ventiladores calefactores raee chatarra metales especiales blanca linea blanca caloventores",
+        materiales: "Línea blanca (heladeras, freezers, lavarropas, secarropas), televisores de tubo (CRT), pantallas y monitores LED, microondas, hornos eléctricos, máquinas a nafta (motosierras, cortadoras), soldadoras, ventiladores y caloventores.",
+        tags: "electroreciclaje campichuelo suiza estudiantes electronica reutilizan componentes proyectos educativos reparacion aprendizaje rotas funcionamiento electrodomesticos grandes heladeras freezers lavarropas secarropas microondas hornos electricos tv de tubo televisor de tubo televisores de tubo tele de tubo teles de tubo crt tv led monitores pantallas maquinas nafteras motosierras motoguadañas cortadoras de cesped maquinas electricas soldadoras ventiladores calefactores raee chatarra metales especiales blanca linea blanca caloventores",
         logo: "/img/logo-electroreciclaje.webp",
         imagen: "/img/electroreciclaje.webp",
         nombre: "ELECTRORECICLAJE",
@@ -162,7 +163,7 @@ export const listaOrganizaciones = [
     {
         categoria: "especiales",
         materiales: "Celulares, TV LED, cables, auriculares, pavas eléctricas, consolas, aparatos de gym, instrumentos musicales, equipos de audio, notebooks, telescopios, minicomponentes, mouse, pendrives, proyectores, cámaras, máquinas de coser, herramientas, parlantes, tablets y latas de pintura de todo tipo (nuevas, usadas o con restos secos).",
-        tags: "electronicos raee cables cable computadoras computadora pc pcs cpu celus celulares celular notebooks notebook tablet tablets auriculares auricular mouse mouses pendrive parlantes equipos de audio consola pava electrica herramientas pintura pinturas latas de pintura lata de pintura barniz sintetico pintura al agua",
+        tags: "electronicos raee cables cable computadoras computadora pc pcs cpu celus celulares celular notebooks notebook tablet tablets auriculares auricular mouse mouses pendrive prendrives prendrivers parlante parlantes equipos de audio equipo de audio proyector camara camaras consola consolas telescopio telescopios pava electrica maquina de coser herramientas aparatos electonicos aparato electronico aparatos de gym aparato de gym dispositivos de comunicación smartwatch smarphone tv led instrumentos musicales minicomponentes mousse pintura pinturas latas de pintura lata de pintura barniz sintetico pintura al agua",
         logo: "/img/logo-electronicos.webp",
         imagen: "/img/residuoselectronicos.webp",
         nombre: "RESIDUOS ELECTRÓNICOS",
@@ -204,6 +205,7 @@ export const listaOrganizaciones = [
     },
     {
         categoria: "especiales",
+        esGuia: true,
         labelMateriales: "Situación actual:",
         iconoMateriales: "fa-solid fa-triangle-exclamation",
         materiales: "Sin recepción continua en Bariloche. Aprendé a encapsularlas en casa de forma segura hasta próximas campañas.",

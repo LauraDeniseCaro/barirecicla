@@ -1650,3 +1650,490 @@ body {
     border-color: rgba(217, 107, 39, 0.2);
     padding: 12px;
 }
+
+/* =========================================================================
+   NAVEGACIÓN DE SECCIONES (Puntos Verdes / Emprendimientos / Cero Basura)
+   ========================================================================= */
+.main-nav-tabs {
+  display: flex;
+  gap: 8px;
+  margin: 14px 0 18px 0;
+  background: #ffffff;
+  padding: 6px;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(27, 67, 50, 0.08);
+  border: 1px solid #d8f3dc;
+}
+
+.main-tab-btn {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: #2d6a4f;
+  font-family: 'Lexend', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 10px 8px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.main-tab-btn i {
+  font-size: 1.05rem;
+}
+
+.main-tab-btn.active {
+  background: #1b4332;
+  color: #ffffff;
+  box-shadow: 0 3px 10px rgba(27, 67, 50, 0.22);
+}
+
+.tab-badge-prox {
+  font-size: 0.62rem;
+  background: #fef3c7;
+  color: #92400e;
+  padding: 1px 6px;
+  border-radius: 99px;
+  font-weight: 700;
+  border: 1px solid #fde68a;
+}
+
+.main-tab-btn.active .tab-badge-prox {
+  background: #fde68a;
+  color: #78350f;
+}
+
+/* Vista Próximamente (Cero Basura) */
+.proximamente-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 32px 22px;
+  text-align: center;
+  border: 2px dashed #95d5b2;
+  margin: 16px 0 28px 0;
+  box-shadow: 0 6px 20px rgba(27, 67, 50, 0.06);
+}
+
+.proximamente-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #d8f3dc;
+  color: #1b4332;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin-bottom: 14px;
+}
+
+.proximamente-pill {
+  display: inline-block;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 99px;
+  margin-bottom: 10px;
+  border: 1px solid #fde68a;
+}
+
+.proximamente-card h3 {
+  color: #1b4332;
+  font-size: 1.35rem;
+  margin: 0 0 10px 0;
+}
+
+.proximamente-card p {
+  color: #4a5568;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  max-width: 520px;
+  margin: 0 auto 18px auto;
+}
+
+.proximamente-features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.proximamente-features span {
+  background: #f0fdf4;
+  color: #1b4332;
+  border: 1px solid #bbf7d0;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* =========================================================================
+   ESTILO DEL BOTÓN "GUÍAS" (5to filtro)
+   ========================================================================= */
+/* Toque sutil en reposo para que invite a hacer clic */
+.btn-filter:nth-child(5) {
+  border-color: rgba(14, 116, 144, 0.25);
+  color: #0e7490;
+}
+
+.btn-filter:nth-child(5) i {
+  color: #0e7490;
+}
+
+/* Color activo al seleccionarlo */
+.btn-filter:nth-child(5).active {
+  background: #0e7490;
+  color: #ffffff;
+  border-color: #0e7490;
+  box-shadow: 0 8px 20px rgba(14, 116, 144, 0.28);
+}
+
+.btn-filter:nth-child(5).active i {
+  color: #ffffff;
+}
+
+/* =========================================================================
+   TABLÓN COMUNITARIO CERO BASURA (Dono / Busco + Formulario)
+   ========================================================================= */
+.cb-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.cb-filtros {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-publicar-cb {
+  background: #1b4332;
+  color: #ffffff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 50px;
+  font-family: var(--fuente-moderna);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(27, 67, 50, 0.25);
+  transition: all 0.2s ease;
+}
+
+.btn-publicar-cb:hover {
+  background: #2d6a4f;
+  transform: translateY(-1px);
+}
+
+.cb-form-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 22px;
+  border: 1px solid #d8f3dc;
+  border-left: 5px solid #2d6a4f;
+  box-shadow: var(--shadow-md);
+}
+
+.cb-form-card h3 {
+  margin: 0 0 6px 0;
+  color: #1b4332;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cb-tipo-selector {
+  display: flex;
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.cb-tipo-btn {
+  flex: 1;
+  padding: 10px;
+  border-radius: 12px;
+  border: 2px solid #e2e8f0;
+  background: #f8fafc;
+  color: #475569;
+  font-family: var(--fuente-moderna);
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.cb-tipo-btn.active-dono {
+  border-color: #2d6a4f;
+  background: #e8f5e9;
+  color: #1b4332;
+}
+
+.cb-tipo-btn.active-busco {
+  border-color: #0e7490;
+  background: #ecfeff;
+  color: #0e7490;
+}
+
+.cb-input {
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  font-family: var(--fuente-moderna);
+  font-size: 0.9rem;
+  box-sizing: border-box;
+}
+
+.cb-input:focus {
+  outline: none;
+  border-color: #2d6a4f;
+  box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.12);
+}
+
+.badge-dono {
+  background: #e8f5e9;
+  color: #1b4332;
+}
+
+.badge-busco {
+  background: #ecfeff;
+  color: #0e7490;
+}
+
+.card-cb-dono {
+  border-left-color: #2d6a4f;
+}
+
+.card-cb-busco {
+  border-left-color: #0e7490;
+}
+
+.btn-whatsapp-cb {
+  margin-top: auto;
+  background: #25d366;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 10px 16px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.2s ease;
+}
+
+.btn-whatsapp-cb:hover {
+  background: #1ebe5d;
+}
+
+/* =========================================================================
+   BARRA DE INSTALACIÓN PWA + BADGE APP INSTALADA + RESPONSIVE MOBILE
+   ========================================================================= */
+.badge-instalada {
+  background: #1b4332;
+  color: #d8f3dc;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 4px;
+  width: fit-content;
+}
+
+.badge-instalada i {
+  color: #52b788;
+}
+
+.install-bar-fixed {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(45, 106, 79, 0.22);
+  border-left: 5px solid #2d6a4f;
+  border-radius: 16px;
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow-sm);
+}
+
+.install-bar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.install-bar-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: #1b4332;
+}
+
+.install-bar-icon {
+  font-size: 1.15rem;
+  color: #2d6a4f;
+  flex-shrink: 0;
+}
+
+.install-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.btn-instalar-pills {
+  background: #1b4332;
+  color: #ffffff;
+  border: none;
+  padding: 7px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  font-family: var(--fuente-moderna);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-instalar-pills:hover {
+  background: #2d6a4f;
+}
+
+.btn-cerrar-banner-bar {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+/* Diseño iPhone / Safari */
+.install-bar-fixed.banner-ios {
+  border-left-color: #007aff;
+}
+
+.install-content-ios {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.install-header-ios {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.install-badge-ios {
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: #007aff;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.install-titulo-ios {
+  margin: 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.pasos-ios {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.82rem;
+  color: #475569;
+}
+
+.pasos-ios p {
+  margin: 0;
+}
+
+.btn-entendido-ios {
+  align-self: flex-end;
+  background: #007aff;
+  color: #ffffff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Ajustes responsivos finos para celular */
+@media (max-width: 600px) {
+  .header-text-wrapper {
+    align-items: center;
+    text-align: center;
+  }
+
+  .badge-instalada {
+    margin: 6px auto 0 auto;
+  }
+
+  .main-nav-tabs {
+    gap: 6px;
+  }
+
+  .main-tab-btn {
+    padding: 10px 6px;
+    font-size: 0.8rem;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .filter-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .btn-filter {
+    justify-content: center;
+    padding: 10px 8px;
+    font-size: 0.86rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* El 5to botón (Guías) ocupa todo el ancho abajo de la grilla 2x2 */
+  .btn-filter:nth-child(5) {
+    grid-column: 1 / -1;
+  }
+}

@@ -1,272 +1,115 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BariRecicla | Guía de Puntos Verdes y Economía Circular en Bariloche</title>
+    <meta
+      name="description"
+      content="Encontrá dónde llevar tus reciclables, compostaje, residuos especiales, emprendimientos sustentables y tablón Cero Basura en San Carlos de Bariloche."
+    />
+    <link rel="canonical" href="https://baritoxicorecicla.vercel.app/" />
+    <meta name="theme-color" content="#1b4332" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BariRecicla | Dónde reciclar en Bariloche - Guía y Mapa de Puntos Verdes</title>
+    <!-- Íconos y PWA -->
+    <link rel="icon" type="image/webp" href="/img/favicon-baritoxico.webp" />
+    <link rel="apple-touch-icon" href="/img/baritoxico-logo.webp" />
+    <link rel="manifest" href="/manifest.json" />
 
-    <!-- Meta etiquetas de optimización SEO -->
-    <meta name="description"
-        content="Guía completa de puntos verdes y reciclaje en San Carlos de Bariloche. Encontrá centros de recepción de plásticos, cartón, compost y residuos especiales.">
-    <meta name="keywords"
-        content="reciclaje, bariloche, puntos verdes, compost, residuos especiales, medio ambiente, ecología, barirecicla">
-    <meta name="author" content="BariRecicla">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://barirecicla.vercel.app/">
+    <!-- Open Graph / WhatsApp / Instagram / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://baritoxicorecicla.vercel.app/" />
+    <meta property="og:title" content="BariRecicla - Economía circular en Bariloche" />
+    <meta
+      property="og:description"
+      content="Guía interactiva de puntos verdes, compostaje, emprendimientos sustentables y donaciones comunitarias en Bariloche."
+    />
+    <meta property="og:image" content="https://baritoxicorecicla.vercel.app/img/banner-redes.webp" />
 
-    <!-- Verificación Google Search Console -->
-    <meta name="google-site-verification" content="cVEjBo2O75K-FDBloI9URBnYCBBge94fRon8Biy7QRo" />
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="BariRecicla - Economía circular en Bariloche" />
+    <meta
+      name="twitter:description"
+      content="Guía interactiva de puntos verdes, compostaje y economía circular en Bariloche."
+    />
+    <meta name="twitter:image" content="https://baritoxicorecicla.vercel.app/img/banner-redes.webp" />
 
-    <!-- Open Graph / Meta etiquetas para Redes Sociales -->
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="BariRecicla">
-    <meta property="og:title" content="BariRecicla - Guía de Puntos Verdes en Bariloche">
-    <meta property="og:description"
-        content="Encontrá centros de recepción de plásticos, cartón, compost y residuos especiales en San Carlos de Bariloche.">
-    <meta property="og:url" content="https://barirecicla.vercel.app/">
-    <meta property="og:image" content="https://barirecicla.vercel.app/img/banner-redes.webp">
+    <!-- Tipografías y Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
 
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="BariRecicla - Guía de Puntos Verdes en Bariloche">
-    <meta name="twitter:description"
-        content="Encontrá centros de recepción de plásticos, cartón, compost y residuos especiales en San Carlos de Bariloche.">
-    <meta name="twitter:image" content="https://barirecicla.vercel.app/img/banner-redes.webp">
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-TS36K32Q');
+    </script>
+    <!-- End Google Tag Manager -->
 
-    <!-- Favicons y soporte PWA -->
-    <link rel="icon" type="image/webp" href="img/favicon-baritoxico.webp">
-    <link rel="apple-touch-icon" href="img/baritoxico-logo.webp">
-    <link rel="manifest" href="manifest.json">
-
-    <!-- Recursos Externos Preconectados -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-
-    <!-- OneSignal Web Push SDK + Lógica de Gestión de Permisos -->
+    <!-- OneSignal Web Push SDK -->
     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
     <script>
-        window.OneSignalDeferred = window.OneSignalDeferred || [];
-        OneSignalDeferred.push(async function (OneSignal) {
-            await OneSignal.init({
-                appId: "7afa2b42-a75a-4746-93bd-406077384b88",
-                safari_web_id: "web.onesignal.auto.1997779e-e1de-41f4-ac74-4543cfbf0412",
-                promptOptions: {
-                    slidedown: {
-                        prompts: [
-                            {
-                                type: "push",
-                                autoPrompt: true,
-                                text: {
-                                    actionMessage: "¿Querés recibir novedades sobre reciclaje en Bariloche?",
-                                    acceptButton: "Suscribirme",
-                                    cancelButton: "Ahora no"
-                                }
-                            }
-                        ]
-                    }
-                }
-            });
-
-            const btnToggle = document.getElementById('btn-onesignal-toggle');
-            const btnText = document.getElementById('btn-onesignal-text');
-
-            if (btnToggle) {
-                async function actualizarEstadoBoton() {
-                    const isSubscribed = OneSignal.User.PushSubscription.optedIn;
-                    if (isSubscribed) {
-                        btnText.innerText = "Desactivar notificaciones";
-                        btnToggle.classList.add("subscripto");
-                    } else {
-                        btnText.innerText = "Activar notificaciones";
-                        btnToggle.classList.remove("subscripto");
-                    }
-                }
-
-                if (OneSignal.Notifications.isPushSupported()) {
-                    OneSignal.User.PushSubscription.addEventListener("change", actualizarEstadoBoton);
-                    await actualizarEstadoBoton();
-                }
-            }
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      OneSignalDeferred.push(async function (OneSignal) {
+        await OneSignal.init({
+          appId: '7afa2b42-a75a-4746-93bd-406077384b88',
+          safari_web_id: 'web.onesignal.auto.1997779e-e1de-41f4-ac74-4543cfbf0412',
+          promptOptions: {
+            slidedown: {
+              prompts: [
+                {
+                  type: 'push',
+                  autoPrompt: true,
+                  text: {
+                    actionMessage: '¿Querés recibir novedades sobre reciclaje en Bariloche?',
+                    acceptButton: 'Suscribirme',
+                    cancelButton: 'Ahora no',
+                  },
+                },
+              ],
+            },
+          },
         });
+      });
     </script>
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G3XHV3WF4W"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-G3XHV3WF4W');
-    </script>
-
-    <!-- Datos Estructurados Schema.org para SEO Local y Aplicación -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "BariRecicla",
-      "url": "https://barirecicla.vercel.app/",
-      "applicationCategory": "EnvironmentalApplication",
-      "operatingSystem": "All",
-      "description": "Guía práctica y mapa interactivo de puntos verdes para reciclar en San Carlos de Bariloche.",
-      "areaServed": {
-        "@type": "City",
-        "name": "San Carlos de Bariloche"
-      }
-    }
-    </script>
-</head>
-
-<body>
+  </head>
+  <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TS36K32Q" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <div class="app-container">
-        <!-- HEADER OVERHAUL PREMIUM -->
-        <div class="header-container">
-            <div class="header-brand-group">
-                <img src="img/baritoxico-logo.webp" class="brand-logo" alt="Logo BariRecicla">
-                <div class="header-text-wrapper">
-                    <h1>BariRecicla</h1>
-                    <h2>Tu guía de puntos verdes</h2>
-                    <span id="badge-app-instalada" class="badge-instalada" style="display: none;">
-                        <i class="fa-solid fa-circle-check"></i> App Instalada
-                    </span>
-                </div>
-            </div>
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TS36K32Q"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe>
+    </noscript>
 
-            <a href="https://cafecito.app/baritoxico" target="_blank" rel="noopener" class="btn-cafecito-header"
-                title="Invitanos un Cafecito">
-                ☕ <span>Cafecito</span>
-            </a>
-        </div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
 
-        <!-- BARRA FIJA DISCRETA DE INSTALACIÓN PWA -->
-        <div id="banner-instalar" class="install-bar-fixed" style="display: none;">
-            <div class="install-bar-content">
-                <div class="install-bar-info">
-                    <i class="fa-solid fa-mobile-screen-button install-bar-icon"></i>
-                    <span><strong>Instalá la App</strong> para usarla más rápido</span>
-                </div>
-                <div class="install-bar-actions">
-                    <button id="btn-instalar-accion" class="btn-instalar-pills">Instalar</button>
-                    <button id="btn-cerrar-banner" class="btn-cerrar-banner-bar" title="Cerrar">&times;</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- RECORDATORIO SUTIL: LIMPIOS Y SECOS (1 sola línea compacta) -->
-        <div class="info-accent-box">
-            <p><i class="fa-solid fa-circle-check"></i> Recordá: todos los materiales deben estar <strong>limpios y
-                    secos</strong>.</p>
-        </div>
-
-        <!-- BUSCADOR Y FILTROS (Quedan arriba para verlos en el primer scroll) -->
-        <div class="search-filter-container">
-            <input type="text" id="buscador" placeholder="Buscar por barrio, material u organización...">
-
-            <div class="filter-buttons">
-                <button class="btn-filter active" onclick="filtrarCategoria(event, 'todas')">
-                    <i class="fa-solid fa-border-all"></i> Todo
-                </button>
-                <button class="btn-filter" onclick="filtrarCategoria(event, 'reciclaje')">
-                    <i class="fa-solid fa-recycle"></i> Reciclables
-                </button>
-                <button class="btn-filter" onclick="filtrarCategoria(event, 'compostaje')">
-                    <i class="fa-solid fa-seedling"></i> Compost
-                </button>
-                <button class="btn-filter" onclick="filtrarCategoria(event, 'especiales')">
-                    <i class="fa-solid fa-triangle-exclamation"></i> Especiales
-                </button>
-            </div>
-        </div>
-
-        <!-- SECCIÓN DE NOVEDADES Y SUSCRIPCIÓN COMPACTA -->
-        <div class="novedades-wrapper">
-            <div class="suscripcion-fija-box">
-                <div class="suscripcion-texto">
-                    <i class="fa-solid fa-bell"></i>
-                    <span>¿Recibir alertas y novedades?</span>
-                </div>
-                <div class="suscripcion-acciones">
-                    <button id="btn-onesignal-toggle" class="btn-suscripcion-toggle">
-                        <span id="btn-onesignal-text">Activar</span>
-                    </button>
-                    <button onclick="this.closest('.suscripcion-fija-box').style.display='none'"
-                        class="btn-cerrar-notif" title="Cerrar">&times;</button>
-                </div>
-            </div>
-
-            <!-- Contenedor dinámico de novedades (Google Sheets) -->
-            <div id="contenedor-novedades"></div>
-        </div>
-
-        <!-- REJILLA DE TARJETAS DINÁMICAS -->
-        <div class="grid-org" id="contenedor-tarjetas"></div>
-
-        <!-- CONTENEDOR DEL MAPA PREMIUM -->
-        <div class="map-container">
-            <div class="map-header">
-                <div class="map-title-wrapper">
-                    <i class="fa-solid fa-map-location-dot map-title-icon"></i>
-                    <div>
-                        <h3>Mapa de Puntos Verdes</h3>
-                        <span>Explorá los centros de recepción en Bariloche</span>
-                    </div>
-                </div>
-            </div>
-            <iframe src="https://www.google.com/maps/d/u/1/embed?mid=1Wp3BTtJJ4WsTPmpX0DdktJHn0T8irK0&ehbc=2E312F"
-                width="100%" height="450" loading="lazy"></iframe>
-        </div>
-
-        <!-- FOOTER BOX MODERNO -->
-        <div class="footer-box">
-            <p class="footer-brand">BARIRECICLA</p>
-
-            <p class="footer-subtitle">
-                ¡Sumate a la comunidad para no perderte ninguna data ambiental!
-            </p>
-
-            <div class="footer-socials">
-                <a href="https://www.instagram.com/baritoxico/" target="_blank" class="footer-icon icon-instagram"
-                    title="Instagram">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-                <a href="https://www.tiktok.com/@baritoxico" target="_blank" class="footer-icon icon-tiktok"
-                    title="TikTok">
-                    <i class="fa-brands fa-tiktok"></i>
-                </a>
-                <a href="https://www.facebook.com/share/1GFwuuGC3p/" target="_blank" class="footer-icon icon-facebook"
-                    title="Facebook">
-                    <i class="fa-brands fa-facebook-f"></i>
-                </a>
-            </div>
-
-            <hr class="footer-hr">
-
-            <div class="support-section">
-                <p class="support-title">¿Te sirvió la guía? 🌲</p>
-                <p class="support-text">
-                    Creamos este espacio de forma independiente para facilitar el reciclaje en Bariloche. Si querés
-                    darnos una mano para seguir mejorando la web y expandir el proyecto, ¡todo suma un montón!
-                </p>
-                <a href="https://cafecito.app/baritoxico" target="_blank" class="btn-cafecito">☕ Invitanos un
-                    Cafecito</a>
-            </div>
-
-            <p class="footer-copy">San Carlos de Bariloche - 2026</p>
-        </div>
-
-    </div>
-
-    <!-- Script principal de la aplicación -->
-    <script src="script.js" defer></script>
-</body>
-
+    <!-- Registro del Service Worker (PWA + OneSignal) -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(() => {});
+        });
+      }
+    </script>
+  </body>
 </html>
