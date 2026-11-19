@@ -11,6 +11,9 @@
     <link rel="canonical" href="https://baritoxicorecicla.vercel.app/" />
     <meta name="theme-color" content="#1b4332" />
 
+    <!-- Verificación Google Search Console -->
+    <meta name="google-site-verification" content="cVEjBo2O75K-FDBloI9URBnYCBBge94fRon8Biy7QRo" />
+
     <!-- Íconos y PWA -->
     <link rel="icon" type="image/webp" href="/img/favicon-baritoxico.webp" />
     <link rel="apple-touch-icon" href="/img/baritoxico-logo.webp" />
@@ -47,20 +50,16 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
 
-    <!-- Google Tag Manager -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G3XHV3WF4W"></script>
     <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != 'dataLayer' ? '&l=' + l : '';
-        j.async = true;
-        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', 'GTM-TS36K32Q');
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-G3XHV3WF4W');
     </script>
-    <!-- End Google Tag Manager -->
 
     <!-- OneSignal Web Push SDK -->
     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
@@ -90,16 +89,6 @@
     </script>
   </head>
   <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript>
-      <iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-TS36K32Q"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe>
-    </noscript>
-
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
 
